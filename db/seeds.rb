@@ -10,12 +10,6 @@ Recipe.destroy_all
 puts "Deleting users..."
 User.destroy_all
 
-puts "Deleting reviews..."
-Review.destroy_all
-
-puts "Deleting user ratings..."
-UserRating.destroy_all
-
 puts "Generating equipment..."
 20.times do
   Equipment.create(name: Faker::Appliance.equipment)
@@ -56,6 +50,12 @@ end
 puts "Generating user ratings..."
 100.times do
   UserRating.create!(score: rand(1..5), user_id: users.sample.id, recipe_id: recipes.sample.id)
+end
+
+puts "Generating favourites..."
+42.times do |n|
+  Favourite.create!(recipe_id: recipes[n].id, user_id: users[rand(0..9)].id, star: true)
+  Favourite.create!(recipe_id: recipes[n].id, user_id: users[rand(10...20)].id, star: true)
 end
 
 puts "Finished seeding"

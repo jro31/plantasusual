@@ -4,5 +4,5 @@ class Recipe < ApplicationRecord
   has_many :ingredients, through: :amounts
   has_many :equipments, through: :recipe_equipments
   has_many :user_ratings, dependent: :destroy
-  has_many :favourites
+  has_many :favourites, dependent: :destroy
 end
