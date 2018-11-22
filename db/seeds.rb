@@ -10,6 +10,11 @@ Recipe.destroy_all
 puts "Deleting users..."
 User.destroy_all
 
+puts "Deleting reviews..."
+Review.destroy_all
+
+puts "Deleting user ratings..."
+UserRating.destroy_all
 
 puts "Generating equipment..."
 20.times do
@@ -38,6 +43,19 @@ end
   2.times do
     Recipe.create!(name: Faker::Food.dish, method: Faker::Food.description, photo: 'https://picsum.photos/200/300', user_id: u3.id)
   end
+end
+
+users = User.all
+recipes = Recipe.all
+
+puts "Generating reviews..."
+50.times do
+  Review.create!(body: Faker::GreekPhilosophers.quote, user_id: users.sample.id, recipe_id: recipes.sample.id)
+end
+
+puts "Generating user ratings..."
+100.times do
+  UserRating.create!(score: rand(1..5), user_id: users.sample.id, recipe_id: recipes.sample.id)
 end
 
 puts "Finished seeding"
