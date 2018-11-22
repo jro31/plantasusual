@@ -49,10 +49,13 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="users" row="id" />
 </row>
-<row name="photo" null="1" autoincrement="0">
+<row name="name" null="1" autoincrement="0">
 <datatype>TEXT</datatype>
 <default>NULL</default></row>
 <row name="method" null="1" autoincrement="0">
+<datatype>TEXT</datatype>
+<default>NULL</default></row>
+<row name="photo" null="1" autoincrement="0">
 <datatype>TEXT</datatype>
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
