@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_22_134331) do
+ActiveRecord::Schema.define(version: 2018_11_22_233457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,12 @@ ActiveRecord::Schema.define(version: 2018_11_22_134331) do
     t.datetime "updated_at", null: false
     t.index ["ingredient_id"], name: "index_amounts_on_ingredient_id"
     t.index ["recipe_id"], name: "index_amounts_on_recipe_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "equipment", force: :cascade do |t|
@@ -50,6 +56,15 @@ ActiveRecord::Schema.define(version: 2018_11_22_134331) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "recipe_categories", force: :cascade do |t|
+    t.bigint "recipe_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_recipe_categories_on_category_id"
+    t.index ["recipe_id"], name: "index_recipe_categories_on_recipe_id"
+  end
+
   create_table "recipe_equipments", force: :cascade do |t|
     t.bigint "recipe_id"
     t.bigint "equipment_id"
@@ -66,6 +81,8 @@ ActiveRecord::Schema.define(version: 2018_11_22_134331) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.integer "servings"
+    t.integer "cooking_time"
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
@@ -110,6 +127,8 @@ ActiveRecord::Schema.define(version: 2018_11_22_134331) do
   add_foreign_key "amounts", "recipes"
   add_foreign_key "favourites", "recipes"
   add_foreign_key "favourites", "users"
+  add_foreign_key "recipe_categories", "categories"
+  add_foreign_key "recipe_categories", "recipes"
   add_foreign_key "recipe_equipments", "equipment"
   add_foreign_key "recipe_equipments", "recipes"
   add_foreign_key "recipes", "users"
