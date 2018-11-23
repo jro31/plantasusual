@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :reviews
   has_many :favourites
   has_many :user_ratings
+
+  validates :username, presence: true, length: { minimum: 3, maximum: 100 }, uniqueness: true
 end
