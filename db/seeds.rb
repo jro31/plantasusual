@@ -80,9 +80,13 @@ end
 end
 
 puts "Generating recipe equipment..."
-
+50.times do
+  RecipeEquipment.create!(recipe_id: recipes.sample.id, equipment_id: equipments.sample.id)
+end
 
 puts "Generating recipe categories..."
-
+75.times do
+  RecipeCategory.create!(recipe_id: recipes.sample.id, category_id: categories.sample.id)
+end
 
 puts "Finished seeding"
