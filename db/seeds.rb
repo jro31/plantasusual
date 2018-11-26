@@ -89,4 +89,9 @@ puts "Generating recipe categories..."
   RecipeCategory.create!(recipe_id: recipes.sample.id, category_id: categories.sample.id)
 end
 
+puts "Generating profiles"
+users.each do |user|
+  Profile.create!(user_id: user.id)
+end
+
 puts "Finished seeding"

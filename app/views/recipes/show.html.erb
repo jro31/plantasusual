@@ -1,0 +1,6 @@
+<h1><%= @recipe.name %></h1>
+<%= image_tag @recipe.photo %>
+<p>Servings: <%= @recipe.servings %></p>
+<p>Cooking time: <%= @recipe.cooking_time %> mins</p>
+<p><%= @recipe.method %></p>
+<p>Submitted by <%= link_to @recipe.user.username, profile_path(@recipe.user.profile) %> </p>

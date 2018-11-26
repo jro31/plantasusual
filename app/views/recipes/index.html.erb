@@ -2,7 +2,8 @@
 
 <ul>
 <% @recipes.each do |recipe| %>
+<%= link_to recipe_path(recipe) do %>
 <li style="font-weight: bold"><%= recipe.name %></li>
-<li><%= recipe.method %></li>
+<% end %>
 <% end %>
 </ul>
