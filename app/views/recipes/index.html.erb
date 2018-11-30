@@ -1,5 +1,7 @@
 <h1>I'm the recipes#index page</h1>
 
+<%= link_to 'Add a recipe', new_recipe_path %>
+
 <ul>
 <% @recipes.each do |recipe| %>
 <%= link_to recipe_path(recipe) do %>

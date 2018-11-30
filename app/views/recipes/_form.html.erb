@@ -1,0 +1,4 @@
+<%= simple_form_for(@recipe) do |f| %>
+  <%= f.input :name, label: "What is the name of your recipe?", placeholder: "Enter recipe name" %>
+  <%= f.submit 'Create recipe' %>
+<% end %>
