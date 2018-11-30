@@ -2,6 +2,7 @@ class AmountsController < ApplicationController
   def new
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_categories = RecipeCategory.where(recipe_id: params[:recipe_id])
+    @recipe_amounts = Amount.where(recipe_id: params[:recipe_id])
     @amount = Amount.new
   end
 
@@ -10,7 +11,7 @@ class AmountsController < ApplicationController
     recipe = Recipe.find(params[:recipe_id])
     @amount.recipe = recipe
     @amount.save
-    redirect_to root_path
+    redirect_to new_recipe_amount_path
   end
 end
 

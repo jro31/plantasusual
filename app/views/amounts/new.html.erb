@@ -1,8 +1,23 @@
 <h1><%= @recipe.name %></h1>
+
 <ul>
 <% @recipe_categories.each do |cat|  %>
   <li><%= cat.category.name %></li>
 <% end %>
 </ul>
 
+<ul>
+  <% @recipe_amounts.each do |ra| %>
+    <li><%= ra.ingredient.name.capitalize %>, <%= ra.size %> <%= ra.unit.measurement %><% if ra.preparation_method %>,
+        <%= ra.preparation_method.name %>
+      <% end %>
+      <% if ra.optional %>
+        (optional)
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
 <%= render 'form', recipe: @recipe, amount: @amount %>
+
+<%= link_to 'Finished adding ingredients', root_path %>
