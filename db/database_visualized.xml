@@ -97,7 +97,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1218" y="396" name="equipment">
+<table x="1223" y="338" name="equipment">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -108,7 +108,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="939" y="314" name="recipe_equipment">
+<table x="918" y="264" name="recipe_equipment">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -124,7 +124,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1149" y="608" name="ingredients">
+<table x="1041" y="412" name="ingredients">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -135,7 +135,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="907" y="543" name="amount">
+<table x="825" y="468" name="amount">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -147,15 +147,17 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="recipes" row="id" />
 </row>
+<row name="preparation_methods_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="preparation_methods" row="id" />
+</row>
 <row name="size" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="unit" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
-<default>NULL</default></row>
-<row name="preparation" null="1" autoincrement="0">
-<datatype>TEXT</datatype>
-<default>NULL</default></row>
+<row name="units_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="units" row="id" />
+</row>
 <row name="optional" null="1" autoincrement="0">
 <datatype>BOOLEAN</datatype>
 <default>NULL</default></row>
@@ -255,6 +257,28 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="users" row="id" />
 </row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1075" y="546" name="preparation_methods">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="1" autoincrement="0">
+<datatype>TEXT</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="1110" y="660" name="units">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="measurement" null="1" autoincrement="0">
+<datatype>TEXT</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>

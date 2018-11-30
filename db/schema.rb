@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_30_100417) do
+ActiveRecord::Schema.define(version: 2018_11_30_170219) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,13 +19,15 @@ ActiveRecord::Schema.define(version: 2018_11_30_100417) do
     t.bigint "ingredient_id"
     t.bigint "recipe_id"
     t.integer "size"
-    t.string "unit"
-    t.string "preparation"
     t.boolean "optional", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "unit_id"
+    t.bigint "preparation_method_id"
     t.index ["ingredient_id"], name: "index_amounts_on_ingredient_id"
+    t.index ["preparation_method_id"], name: "index_amounts_on_preparation_method_id"
     t.index ["recipe_id"], name: "index_amounts_on_recipe_id"
+    t.index ["unit_id"], name: "index_amounts_on_unit_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -51,6 +53,12 @@ ActiveRecord::Schema.define(version: 2018_11_30_100417) do
   end
 
   create_table "ingredients", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "preparation_methods", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -103,6 +111,12 @@ ActiveRecord::Schema.define(version: 2018_11_30_100417) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "units", force: :cascade do |t|
+    t.string "measurement"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_ratings", force: :cascade do |t|
     t.integer "score", null: false
     t.bigint "user_id"
@@ -131,7 +145,9 @@ ActiveRecord::Schema.define(version: 2018_11_30_100417) do
   end
 
   add_foreign_key "amounts", "ingredients"
+  add_foreign_key "amounts", "preparation_methods"
   add_foreign_key "amounts", "recipes"
+  add_foreign_key "amounts", "units"
   add_foreign_key "favourites", "recipes"
   add_foreign_key "favourites", "users"
   add_foreign_key "profiles", "users"

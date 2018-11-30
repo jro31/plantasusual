@@ -13,6 +13,12 @@ Category.destroy_all
 puts "Deleting users..."
 User.destroy_all
 
+puts "Deleting preparation methods"
+PreparationMethod.destroy_all
+
+puts "Deleting units"
+Unit.destroy_all
+
 puts "Generating equipment..."
 20.times do
   Equipment.create(name: Faker::Appliance.equipment)
@@ -48,11 +54,25 @@ end
   end
 end
 
+puts "Generating preparation methods..."
+prep_methods = ['chopped', 'seeded', 'rinsed', 'quartered', 'diced', 'toasted', 'ground', 'shelled']
+prep_methods.sort.each do |pm|
+  PreparationMethod.create!(name: pm)
+end
+
+puts "Generating units..."
+units = ['grams', 'millilitres', 'pinch', 'splash', 'teaspoon', 'tablespoon', 'cup', 'dash']
+units.sort.each do |unit|
+  Unit.create!(measurement: unit)
+end
+
 users = User.all
 recipes = Recipe.all
 equipments = Equipment.all
 ingredients = Ingredient.all
 categories = Category.all
+preparation_methods = PreparationMethod.all
+units = Unit.all
 
 puts "Generating reviews..."
 50.times do
@@ -71,12 +91,11 @@ puts "Generating favourites..."
 end
 
 puts "Generating amounts..."
-prep_methods = ['chopped', 'seeded', 'rinsed', 'quartered', 'diced', 'toasted', 'ground', 'shelled']
 202.times do
- Amount.create!(ingredient_id: ingredients.sample.id, recipe_id: recipes.sample.id, size: rand(1...100), unit: Faker::Food.metric_measurement, preparation: prep_methods.sample, optional: false)
+ Amount.create!(ingredient_id: ingredients.sample.id, recipe_id: recipes.sample.id, size: rand(1...100), unit_id: units.sample.id, preparation_method_id: preparation_methods.sample.id, optional: false)
 end
 50.times do
-  Amount.create!(ingredient_id: ingredients.sample.id, recipe_id: recipes.sample.id, size: rand(1...100), unit: Faker::Food.metric_measurement, preparation: prep_methods.sample, optional: true)
+  Amount.create!(ingredient_id: ingredients.sample.id, recipe_id: recipes.sample.id, size: rand(1...100), unit_id: units.sample.id, preparation_method_id: preparation_methods.sample.id, optional: true)
 end
 
 puts "Generating recipe equipment..."
