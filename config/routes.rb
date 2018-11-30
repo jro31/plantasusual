@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
-  resources :profiles
+  resources :profiles, only: [:show]
   resources :recipes do
-    resources :recipe_equipments, :amounts, :recipe_categories
+    resources :recipe_categories, only: [:new, :create]
+    resources :amounts, only: [:new, :create]
+    resources :recipe_equipments, only: [:new, :create]
   end
 end
