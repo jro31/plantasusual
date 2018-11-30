@@ -1,4 +1,8 @@
 <%= simple_form_for [@recipe, @amount] do |f| %>
-  <%= f.association :category, as: :check_boxes, label: "What kind of recipe is this? (select all that apply)" %>
+  <%= f.association :ingredient %>
+  <%= f.input :size %>
+  <%= f.association :unit, label_method: :measurement %>
+  <%= f.association :preparation_method, label: "Preparation (optional)" %>
+  <%= f.input :optional %>
   <%= f.submit 'Add ingredient' %>
 <% end %>

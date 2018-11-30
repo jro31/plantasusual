@@ -26,7 +26,7 @@ end
 
 puts "Generating ingredients..."
 50.times do
-  Ingredient.create(name: Faker::Food.ingredient)
+  Ingredient.create(name: Faker::Food.ingredient.downcase)
 end
 
 puts "Generating categories..."
