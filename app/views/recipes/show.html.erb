@@ -1,6 +1,38 @@
 <h1><%= @recipe.name %></h1>
-<%= image_tag @recipe.photo %>
+
+<% if @recipe.photo %>
+  <%= image_tag @recipe.photo %>
+<% end %>
+
 <p>Servings: <%= @recipe.servings %></p>
+
 <p>Cooking time: <%= @recipe.cooking_time %> mins</p>
-<p><%= @recipe.method %></p>
+
+<p>Ingredients:</p>
+<ul>
+<% @amounts.each do |amount| %>
+  <li><%= amount.ingredient.name %>, <%= amount.size %> <%= amount.unit.measurement %>, <%= amount.preparation_method.name %><% if amount.optional %>,
+    (optional)
+    <% end %>
+  </li>
+<% end %>
+</ul>
+
+<p>Categories:</p>
+<ul>
+  <% @categories.each do |cat| %>
+    <li><%= cat.category.name %></li>
+  <% end %>
+</ul>
+
+<p>Equipment:</p>
+<ul>
+  <% @equipments.each do |eq| %>
+    <li>
+      <%= eq.equipment.name %>
+    </li>
+  <% end %>
+</ul>
+
+<p>Method: <%= @recipe.method %></p>
 <p>See all recipes by <%= link_to @recipe.user.username, profile_path(@recipe.user.profile) %> </p>

@@ -1,0 +1,4 @@
+<%= simple_form_for [@recipe, @recipe_equipment] do |f| %>
+  <%= f.association :equipment, as: :check_boxes, label: "Does this recipe require any of the following equipment?" %>
+  <%= f.submit 'Add equipment' %>
+<% end %>
