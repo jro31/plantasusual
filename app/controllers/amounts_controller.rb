@@ -7,11 +7,27 @@ class AmountsController < ApplicationController
   end
 
   def create
-    @amount = Amount.new(amount_params)
-    recipe = Recipe.find(params[:recipe_id])
-    @amount.recipe = recipe
-    @amount.save
-    redirect_to new_recipe_amount_path
+    if Ingredient.exists?(name: params[:amount][:ingredient].downcase)
+      @amount = Amount.new(amount_params)
+      recipe = Recipe.find(params[:recipe_id])
+      @amount.recipe = recipe
+      ingredient = Ingredient.find_by name: params[:amount][:ingredient].downcase
+      @amount.ingredient = ingredient
+      @amount.save
+      redirect_to new_recipe_amount_path
+    else
+      new_ingredient = Ingredient.new(ingredient_params)
+      new_ingredient.name = params[:amount][:ingredient].downcase
+      new_ingredient.save
+
+      @amount = Amount.new(amount_params)
+      recipe = Recipe.find(params[:recipe_id])
+      @amount.recipe = recipe
+      ingredient = Ingredient.find_by name: params[:amount][:ingredient].downcase
+      @amount.ingredient = ingredient
+      @amount.save
+      redirect_to new_recipe_amount_path
+    end
   end
 end
 
@@ -19,4 +35,8 @@ private
 
 def amount_params
   params.require(:amount).permit(:ingredient_id, :recipe_id, :size, :optional, :unit_id, :preparation_method_id)
+end
+
+def ingredient_params
+  params.permit(:name)
 end

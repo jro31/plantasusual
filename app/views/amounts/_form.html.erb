@@ -1,5 +1,5 @@
 <%= simple_form_for [@recipe, @amount] do |f| %>
-  <%= f.association :ingredient %>
+  <%= f.input :ingredient %>
   <%= f.input :size %>
   <%= f.association :unit, label_method: :measurement %>
   <%= f.association :preparation_method, label: "Preparation (optional)" %>
