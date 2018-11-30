@@ -9,6 +9,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.user = current_user
     @recipe.save
+    redirect_to new_recipe_recipe_category_path(@recipe)
   end
 
   def index
