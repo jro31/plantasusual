@@ -1,1 +1,8 @@
-<h1>I'm the amounts#new page</h1>
+<h1><%= @recipe.name %></h1>
+<ul>
+<% @recipe_categories.each do |cat|  %>
+  <li><%= cat.category.name %></li>
+<% end %>
+</ul>
+
+<%= render 'form', recipe: @recipe, amount: @amount %>

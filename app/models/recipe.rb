@@ -9,4 +9,6 @@ class Recipe < ApplicationRecord
   has_many :favourites, dependent: :destroy
   has_many :recipe_categories, dependent: :destroy
   has_many :categories, through: :recipe_categories
+
+  validates :name, presence: true, length: { minimum: 3 }
 end
