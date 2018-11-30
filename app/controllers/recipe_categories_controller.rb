@@ -5,10 +5,17 @@ class RecipeCategoriesController < ApplicationController
   end
 
   def create
-    @recipe_category = RecipeCategory.new(recipe_category_params)
-    @recipe = Recipe.find(params[:recipe_id])
-    @recipe_category.recipe = @recipe
-    @recipe_category.save
+    rcp = params[:recipe_category]
+    chosen_categories = rcp[:category_id]
+    chosen_categories.each do |category|
+      if category != ""
+        chosen_category = {"category_id" => category}
+        @recipe_category = RecipeCategory.new(chosen_category)
+        @recipe = Recipe.find(params[:recipe_id])
+        @recipe_category.recipe = @recipe
+        @recipe_category.save
+      end
+    end
     redirect_to new_recipe_amount_path(@recipe)
   end
 end

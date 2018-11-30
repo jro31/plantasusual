@@ -1,4 +1,4 @@
 <%= simple_form_for [@recipe, @recipe_category] do |f| %>
-  <%= f.association :category, collection: Category.all, label: "What kind of recipe is this? (select all that apply)" %>
+  <%= f.association :category, as: :check_boxes, label: "What kind of recipe is this? (select all that apply)" %>
   <%= f.submit 'Add categories' %>
 <% end %>
