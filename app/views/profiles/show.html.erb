@@ -1,8 +1,22 @@
+<div class="global_wrapper">
+  <div class="foreground_element">
+    <% if @user == current_user %>
+    <h1>My profile </h1>
+    <% else %>
 <h1><%= @user.username %>'s profile</h1>
-<h3><%= @user.username %>'s recipes:</h3>
+<% end %>
+</div>
 
+<div class="foreground_element">
+  <% if @user == current_user %>
+  <h3>My recipes:</h3>
+  <% else %>
+<h3><%= @user.username %>'s recipes:</h3>
+  <% end %>
 <ul>
 <% @user.recipes.each do |recipe| %>
 <li><%= recipe.name %></li>
 <% end %>
 </ul>
+</div>
+</div>

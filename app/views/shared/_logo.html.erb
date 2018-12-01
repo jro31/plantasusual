@@ -10,12 +10,12 @@
       <% end %>
       <ul class="dropdown-menu dropdown-menu-left logo-dropdown-menu">
         <li>
-          <%= link_to "#" do %>
+          <%= link_to recipes_path do %>
             <i class="fas fa-home"></i> <%= t(".home", default: "Home") %>
           <% end %>
         </li>
         <li>
-          <%= link_to "#" do %>
+          <%= link_to profile_path(current_user) do %>
             <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
           <% end %>
         </li>
@@ -25,20 +25,41 @@
           <% end %>
         </li>
         <li>
-          <%= link_to "#" do %>
+          <%= link_to new_recipe_path do %>
             <i class="fas fa-smile-wink"></i>  <%= t(".add_recipe", default: "Add a recipe") %>
           <% end %>
         </li>
         <li>
           <%= link_to destroy_user_session_path, method: :delete do %>
-            <i class="fas fa-poop"></i>  <%= t(".sign_out", default: "Log out") %>
+            <i class="fas fa-poop"></i>  <%= t(".log_out", default: "Log out") %>
           <% end %>
         </li>
       </ul>
     </div>
   </div>
 <% else %>
-<%= image_tag "logo.png", height: 50 %>
+  <div class="logo-item">
+    <div class="dropdown">
+      <%= image_tag "plant_logo", class: "avatar dropdown-toggle", "data-toggle" => "dropdown" %>
+      <ul class="dropdown-menu dropdown-menu-left logo-dropdown-menu">
+        <li>
+          <%= link_to recipes_path do %>
+            <i class="fas fa-home"></i> <%= t(".home", default: "Home") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#" do %>
+            <i class="fas fa-search"></i>  <%= t(".search", default: "Search") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_user_session_path do %>
+            <i class="fas fa-leaf"></i> <%= t(".sign_in", default: "Sign in") %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
 <% end %>
 
 </div>
