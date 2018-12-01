@@ -30,7 +30,7 @@ puts "Generating ingredients..."
 end
 
 puts "Generating categories..."
-categories_array = ['Dessert', 'Healthy', 'Breakfast', 'Gluten-free', 'Grain', 'Smoothie', 'Main', 'Side', 'Condiment', 'Salad', 'Soup', 'Sandwich']
+categories_array = ['Dessert', 'Healthy', 'Breakfast', 'Gluten-free', 'Grain', 'Smoothie', 'Main', 'Side', 'Condiment', 'Salad', 'Soup', 'Sandwich'].sort
 categories_array.each do |c|
   Category.create!(name: c)
 end

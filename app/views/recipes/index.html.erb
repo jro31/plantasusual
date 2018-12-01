@@ -1,11 +1,15 @@
-<h1>I'm the recipes#index page</h1>
-
+<div class="global_wrapper">
+<div class="foreground_element">
+<h1>Recipes</h1>
 <%= link_to 'Add a recipe', new_recipe_path %>
+</div>
+
 
 <ul>
 <% @recipes.each do |recipe| %>
 <%= link_to recipe_path(recipe) do %>
-<li style="font-weight: bold"><%= recipe.name %></li>
+<li class="foreground_element"><%= recipe.name %></li>
 <% end %>
 <% end %>
 </ul>
+</div>

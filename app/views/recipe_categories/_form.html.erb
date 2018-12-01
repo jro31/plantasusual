@@ -1,4 +1,6 @@
 <%= simple_form_for [@recipe, @recipe_category] do |f| %>
-  <%= f.association :category, as: :check_boxes, label: "What kind of recipe is this? (select all that apply)" %>
-  <%= f.submit 'Add categories' %>
+<div class="foreground_element">
+  <%= f.association :category, as: :check_boxes, label: "What kind of recipe is this? (select all that apply)", item_wrapper_class: 'checkboxes_inline' %>
+  <%= f.submit 'Add categories', class: "btn btn-primary" %>
+  </div>
 <% end %>
