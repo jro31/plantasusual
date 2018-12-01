@@ -1,0 +1,44 @@
+<div class="logo-left hidden-xs hidden-sm">
+
+<% if user_signed_in? %>
+  <div class="logo-item">
+    <div class="dropdown">
+      <% if current_user.profile_picture %>
+        <%= cl_image_tag current_user.profile_picture, :gravity => "face", class: "avatar dropdown-toggle", "data-toggle" => "dropdown" %>
+      <% else %>
+        <%= cl_image_tag "https://res.cloudinary.com/dftybtoej/image/upload/v1542030994/empty_profile.jpg", class: "avatar dropdown-toggle", "data-toggle" => "dropdown" %>
+      <% end %>
+      <ul class="dropdown-menu dropdown-menu-left logo-dropdown-menu">
+        <li>
+          <%= link_to "#" do %>
+            <i class="fas fa-home"></i> <%= t(".home", default: "Home") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#" do %>
+            <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#" do %>
+            <i class="fas fa-search"></i>  <%= t(".search", default: "Search") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#" do %>
+            <i class="fas fa-smile-wink"></i>  <%= t(".add_recipe", default: "Add a recipe") %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete do %>
+            <i class="fas fa-poop"></i>  <%= t(".sign_out", default: "Log out") %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+<% else %>
+<%= image_tag "logo.png", height: 50 %>
+<% end %>
+
+</div>
