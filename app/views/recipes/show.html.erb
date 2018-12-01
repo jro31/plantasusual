@@ -1,15 +1,35 @@
-<h1><%= @recipe.name %></h1>
+<div class="global_wrapper">
+<h1 class="foreground_element"><%= @recipe.name %></h1>
 
 <% if @recipe[:photo] %>
+<div class="foreground_element">
   <%= cl_image_tag @recipe.photo, height: 300, width: 400, crop: :fill %>
-<% else %>
-  <%= cl_image_tag "https://res.cloudinary.com/dftybtoej/image/upload/v1543647944/add_picture.png", height: 300, width: 400, crop: :fill %>
+</div>
 <% end %>
 
+<div class="foreground_element">
 <p>Servings: <%= @recipe.servings %></p>
 
 <p>Cooking time: <%= @recipe.cooking_time %> mins</p>
 
+<p>Equipment needed:</p>
+<ul>
+  <% @equipments.each do |eq| %>
+    <li>
+      <%= eq.equipment.name %>
+    </li>
+  <% end %>
+</ul>
+
+<p>Categories:</p>
+<ul>
+  <% @categories.each do |cat| %>
+    <li><%= cat.category.name %></li>
+  <% end %>
+</ul>
+</div>
+
+<div class="foreground_element">
 <p>Ingredients:</p>
 <ul>
 <% @amounts.each do |amount| %>
@@ -19,22 +39,10 @@
   </li>
 <% end %>
 </ul>
+</div>
 
-<p>Categories:</p>
-<ul>
-  <% @categories.each do |cat| %>
-    <li><%= cat.category.name %></li>
-  <% end %>
-</ul>
-
-<p>Equipment:</p>
-<ul>
-  <% @equipments.each do |eq| %>
-    <li>
-      <%= eq.equipment.name %>
-    </li>
-  <% end %>
-</ul>
-
+<div class="foreground_element">
 <p>Method: <%= @recipe.method %></p>
 <p>See all recipes by <%= link_to @recipe.user.username, profile_path(@recipe.user.profile) %> </p>
+</div>
+</div>
