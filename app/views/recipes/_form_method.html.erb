@@ -1,8 +1,18 @@
 <%= simple_form_for(@recipe) do |f| %>
-  <%= f.input :servings, collection: 1..20, required: true, label: "How many servings does this recipe make?" %>
-  <%= f.input :cooking_time, collection: @times, required: true, label: "What is the total cooking time? (mins)" %>
-  <%= f.input :method, as: :text, required: true, label: "What is the method?" %>
-  <%= f.input :photo %>
+<div class="foreground_element">
+  <div class="form-inline form_row">
+  <%= f.input :servings, collection: 1..20, required: true, label: false, prompt: "Number of servings", input_html: { style: 'width: 250px' } %>
+  <%= f.input :cooking_time, collection: @times, required: true, label: false, prompt: "Total cooking time (mins)", input_html: { style: 'width: 250px' } %>
+  </div>
+  <div class="form_row">
+  <%= f.input :method, as: :text, required: true, label: "What is the method?", input_html: { style: 'height: 300px; width: 100%' } %>
+  </div>
+  <div class="form_row file_upload">
+  <%= f.input :photo, label: "Upload a photo" %>
   <%= f.input :photo_cache, as: :hidden %>
-  <%= f.submit 'Save recipe' %>
+  </div>
+  <div>
+  <%= f.submit 'Save the method', class: 'btn btn-primary' %>
+  </div>
+  </div>
 <% end %>
