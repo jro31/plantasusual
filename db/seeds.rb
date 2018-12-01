@@ -61,7 +61,7 @@ prep_methods.sort.each do |pm|
 end
 
 puts "Generating units..."
-units = ['grams', 'millilitres', 'pinches', 'splashes', 'teaspoons', 'tablespoons', 'cups', 'dashes']
+units = ['grams', 'millilitres', 'pinches', 'splashes', 'teaspoons', 'tablespoons', 'cups', 'dashes', 'litres', 'kilograms', 'pieces']
 units.sort.each do |unit|
   Unit.create!(measurement: unit)
 end

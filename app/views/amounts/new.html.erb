@@ -1,11 +1,10 @@
+<div class="global_wrapper">
+  <div class="foreground_element">
 <h1><%= @recipe.name %></h1>
+  </div>
 
-<ul>
-<% @recipe_categories.each do |cat|  %>
-  <li><%= cat.category.name %></li>
-<% end %>
-</ul>
-
+<div class="foreground_element">
+  <h2>Add ingredients</h2>
 <ul>
   <% @recipe_amounts.each do |ra| %>
     <li><%= ra.ingredient.name.capitalize %>, <%= ra.size %> <%= ra.unit.measurement %><% if ra.preparation_method %>,
@@ -17,7 +16,11 @@
     </li>
   <% end %>
 </ul>
+</div>
 
 <%= render 'form', recipe: @recipe, amount: @amount %>
 
-<%= link_to 'Finished adding ingredients', new_recipe_recipe_equipment_path %>
+<div class="foreground_element">
+<%= link_to "I've finished adding ingredients", new_recipe_recipe_equipment_path, class: 'btn btn-warning' %>
+</div>
+</div>
