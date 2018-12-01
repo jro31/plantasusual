@@ -1,8 +1,7 @@
 <h1><%= @recipe.name %></h1>
 
 <% if @recipe.photo %>
-  <%= cl_image_tag("https://res.cloudinary.com/dftybtoej/image/upload/v1543644769/83.jpg",
-      width: 400, height: 300, crop: :fill) %>
+  <%= cl_image_tag @recipe.photo, height: 300, width: 400, crop: :fill %>
 <% end %>
 
 <p>Servings: <%= @recipe.servings %></p>
@@ -12,7 +11,7 @@
 <p>Ingredients:</p>
 <ul>
 <% @amounts.each do |amount| %>
-  <li><%= amount.ingredient.name %>, <%= amount.size %> <%= amount.unit.measurement %>, <%= amount.preparation_method.name %><% if amount.optional %>,
+  <li><%= amount.ingredient.name %>, <%= amount.size %> <%= amount.unit.measurement %><% if amount.preparation_method != nil %>,<%= amount.preparation_method.name %><% end %><% if amount.optional %>,
     (optional)
     <% end %>
   </li>

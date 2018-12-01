@@ -1,6 +1,8 @@
 <%= simple_form_for(@recipe) do |f| %>
-  <%= f.input :servings, collection: 1..20, label: "How many servings does this recipe make?" %>
-  <%= f.input :cooking_time, collection: @times,  label: "What is the total cooking time? (mins)" %>
-  <%= f.input :method, as: :text, label: "What is the method?" %>
+  <%= f.input :servings, collection: 1..20, required: true, label: "How many servings does this recipe make?" %>
+  <%= f.input :cooking_time, collection: @times, required: true, label: "What is the total cooking time? (mins)" %>
+  <%= f.input :method, as: :text, required: true, label: "What is the method?" %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
   <%= f.submit 'Save recipe' %>
 <% end %>

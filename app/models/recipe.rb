@@ -11,4 +11,6 @@ class Recipe < ApplicationRecord
   has_many :categories, through: :recipe_categories
 
   validates :name, presence: true, length: { minimum: 3 }
+
+  mount_uploader :photo, PhotoUploader
 end
