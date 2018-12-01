@@ -1,7 +1,9 @@
 <h1><%= @recipe.name %></h1>
 
-<% if @recipe.photo %>
+<% if @recipe[:photo] %>
   <%= cl_image_tag @recipe.photo, height: 300, width: 400, crop: :fill %>
+<% else %>
+  <%= cl_image_tag "https://res.cloudinary.com/dftybtoej/image/upload/v1543647944/add_picture.png", height: 300, width: 400, crop: :fill %>
 <% end %>
 
 <p>Servings: <%= @recipe.servings %></p>

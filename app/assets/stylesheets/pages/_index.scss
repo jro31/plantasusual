@@ -1,2 +1,9 @@
 // Import page-specific CSS files here.
 @import "home";
+
+body {
+  background-size: 100vw 100vh;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url("chop.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
