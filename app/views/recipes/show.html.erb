@@ -43,6 +43,11 @@
 
 <div class="foreground_element">
 <p>Method: <%= @recipe.method %></p>
-<p>See all recipes by <%= link_to @recipe.user.username, profile_path(@recipe.user.profile) %> </p>
 </div>
+
+<%= link_to profile_path(@recipe.user.profile) do %>
+<div class="foreground_element">
+<p>See all recipes by <%= @recipe.user.username %> </p>
+</div>
+<% end %>
 </div>

@@ -1,0 +1,15 @@
+.recipe_index_cards {
+  text-align: left;
+}
+
+.recipe_index_cards img {
+  float: left;
+  margin: -20px 20px 0 0;
+}
+
+// THIS ENSURES THAT THE CONTAINING ELEMENT CONTINUES UNTIL THE END OF ANY FLOATED IMAGES
+.recipe_index_cards div.floated_images_clear {
+    clear: both;
+    margin: 0;
+    padding: 0;
+}
