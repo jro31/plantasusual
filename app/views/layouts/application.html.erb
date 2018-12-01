@@ -9,7 +9,9 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
-  <body>
+
+  <% images = ['fruit.jpg', 'chop.jpg', 'fruity.jpg'] %>
+  <body style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path images.sample %>'); background-size: 100vw 100vh; background-repeat: no-repeat; background-attachment: fixed">
     <%= render 'shared/navbar' unless defined? @hide %>
     <%= render 'shared/flashes' %>
     <%= yield %>
