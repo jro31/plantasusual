@@ -28,6 +28,10 @@
     <%= f.input :password_confirmation,
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
+    <div class="form_row file_upload">
+      <%= f.input :profile_picture, label: "Upload a photo" %>
+      <%= f.input :profile_picture_cache, as: :hidden %>
+    </div>
   </div>
 
   <div class="form-actions">

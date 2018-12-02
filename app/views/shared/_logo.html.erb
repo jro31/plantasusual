@@ -3,10 +3,10 @@
 <% if user_signed_in? %>
   <div class="logo-item">
     <div class="dropdown">
-      <% if current_user.profile_picture %>
+      <% if current_user[:profile_picture] %>
         <%= cl_image_tag current_user.profile_picture, :gravity => "face", class: "avatar dropdown-toggle", "data-toggle" => "dropdown" %>
       <% else %>
-        <%= cl_image_tag "https://res.cloudinary.com/dftybtoej/image/upload/v1542030994/empty_profile.jpg", class: "avatar dropdown-toggle", "data-toggle" => "dropdown" %>
+        <%= image_tag "plant_logo", class: "avatar dropdown-toggle", "data-toggle" => "dropdown" %>
       <% end %>
       <ul class="dropdown-menu dropdown-menu-left logo-dropdown-menu">
         <li>
