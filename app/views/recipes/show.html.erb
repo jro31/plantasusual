@@ -52,8 +52,9 @@
 <div class="foreground_element">
 <h3>Comments</h3>
 <% if current_user %>
-  <%= simple_form_for(@recipe) do |f| %>
-    [ADD COMMENT FORM]
+  <%= simple_form_for [@recipe, @comment] do |f| %>
+    <%= f.input :body, as: :text, label: 'Add a comment' %>
+    <%= f.submit 'Comment', class: 'btn btn-primary' %>
   <% end %>
 <% else %>
   <%= link_to 'Sign-in to comment', new_user_session_path %>
