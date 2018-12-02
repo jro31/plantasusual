@@ -48,4 +48,23 @@
 <p>See all recipes by <%= @recipe.user.username %> </p>
 </div>
 <% end %>
+
+<div class="foreground_element">
+<h3>Comments</h3>
+<% if current_user %>
+  <%= simple_form_for(@recipe) do |f| %>
+    [ADD COMMENT FORM]
+  <% end %>
+<% else %>
+  <%= link_to 'Sign-in to comment', new_user_session_path %>
+<% end %>
+</div>
+
+<% comments = Comment.where(recipe_id: params[:id]) %>
+<% comments.each do |c| %>
+  <div class="foreground_element">
+    <p class="comment_body"><%= c.body %></p>
+    <p class="comment_user"><%= link_to c.user.username, profile_path(c.user) %></p>
+  </div>
+<% end %>
 </div>

@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :amounts, only: [:new, :create]
     resources :recipe_equipments, only: [:new, :create]
     resources :favourites, only: [:create, :destroy]
+    resources :comments, only: [:create]
   end
 end
