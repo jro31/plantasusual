@@ -20,8 +20,8 @@ puts "Deleting units"
 Unit.destroy_all
 
 puts "Generating equipment..."
-equipment_array = ['blender', 'food processor', 'oven', 'stove', 'skillet']
-equipment_array.each do |e|
+equipment_array = ['blender', 'food processor', 'oven', 'stove', 'skillet', 'baking dish']
+equipment_array.sort.each do |e|
   Equipment.create(name: e)
 end
 
@@ -32,7 +32,7 @@ end
 
 puts "Generating categories..."
 categories_array = ['Dessert', 'Healthy', 'Breakfast', 'Gluten-free', 'Grain', 'Smoothie', 'Main', 'Side', 'Condiment', 'Salad', 'Soup', 'Sandwich'].sort
-categories_array.each do |c|
+categories_array.sort.each do |c|
   Category.create!(name: c)
 end
 
@@ -75,15 +75,15 @@ categories = Category.all
 preparation_methods = PreparationMethod.all
 units = Unit.all
 
-puts "Generating reviews..."
+puts "Generating comments..."
 50.times do
-  Review.create!(body: Faker::GreekPhilosophers.quote, user_id: users.sample.id, recipe_id: recipes.sample.id)
+  Comment.create!(body: Faker::GreekPhilosophers.quote, user_id: users.sample.id, recipe_id: recipes.sample.id)
 end
 
 puts "Generating favourites..."
 42.times do |n|
-  Favourite.create!(recipe_id: recipes[n].id, user_id: users[rand(0..10)].id, star: true)
-  Favourite.create!(recipe_id: recipes[n].id, user_id: users[rand(10...20)].id, star: true)
+  Favourite.create!(recipe_id: recipes[n].id, user_id: users[rand(0..10)].id)
+  Favourite.create!(recipe_id: recipes[n].id, user_id: users[rand(10...20)].id)
 end
 
 puts "Generating amounts..."
