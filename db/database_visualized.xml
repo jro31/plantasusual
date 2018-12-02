@@ -135,7 +135,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="825" y="468" name="amount">
+<table x="825" y="468" name="amounts">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -165,7 +165,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="159" y="134" name="favourite">
+<table x="159" y="134" name="favourites">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -177,14 +177,11 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="recipes" row="id" />
 </row>
-<row name="star" null="1" autoincrement="0">
-<datatype>BOOLEAN</datatype>
-<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="627" y="624" name="review">
+<table x="628" y="617" name="comments">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -230,7 +227,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="133" y="481" name="profile">
+<table x="133" y="481" name="profiles">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
