@@ -20,8 +20,9 @@ puts "Deleting units"
 Unit.destroy_all
 
 puts "Generating equipment..."
-20.times do
-  Equipment.create(name: Faker::Appliance.equipment)
+equipment_array = ['blender', 'food processor', 'oven', 'stove', 'skillet']
+equipment_array.each do |e|
+  Equipment.create(name: e)
 end
 
 puts "Generating ingredients..."
@@ -39,18 +40,18 @@ puts "Generating users and recipes..."
 u1 = User.new(email: 'j@j.j', password: 'jjjjjj', username: 'jro', first_name: 'Jethro', last_name: 'Williams', profile_picture: 'https://res.cloudinary.com/dftybtoej/image/upload/v1542027237/stock_photo.jpg', admin: true)
 u1.save
 3.times do
-  Recipe.create!(name: Faker::Food.dish, method: Faker::Food.description, photo: 'https://picsum.photos/200/300', user_id: u1.id, servings: rand(1...8), cooking_time: (rand(1...24) * 5))
+  Recipe.create!(name: Faker::Food.dish, method: Faker::Food.description, photo: 'https://res.cloudinary.com/dftybtoej/image/upload/v1543645966/xwxdflrs0w2wwqjqvtsh.jpg', user_id: u1.id, servings: rand(1...8), cooking_time: (rand(1...24) * 5))
 end
 u2 = User.new(email: 'p@p.p', password: 'pppppp', username: 'pro', first_name: 'Pethro', last_name: 'Milliams', profile_picture: 'https://res.cloudinary.com/dftybtoej/image/upload/v1542031690/coming_soon.jpg', admin: false)
 u2.save
 3.times do
-  Recipe.create!(name: Faker::Food.dish, method: Faker::Food.description, photo: 'https://picsum.photos/200/300', user_id: u2.id, servings: rand(1...8), cooking_time: (rand(1...24) * 5))
+  Recipe.create!(name: Faker::Food.dish, method: Faker::Food.description, user_id: u2.id, servings: rand(1...8), cooking_time: (rand(1...24) * 5))
 end
 18.times do
   u3 = User.new(email: Faker::Internet.email, password: Faker::Internet.password, username: Faker::Internet.username, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, profile_picture: 'https://picsum.photos/200/300', admin: false)
   u3.save
   2.times do
-    Recipe.create!(name: Faker::Food.dish, method: Faker::Food.description, photo: 'https://picsum.photos/200/300', user_id: u3.id, servings: rand(1...8), cooking_time: (rand(1...24) * 5))
+    Recipe.create!(name: Faker::Food.dish, method: Faker::Food.description, photo: 'https://res.cloudinary.com/dftybtoej/image/upload/v1543645966/xwxdflrs0w2wwqjqvtsh.jpg', user_id: u3.id, servings: rand(1...8), cooking_time: (rand(1...24) * 5))
   end
 end
 

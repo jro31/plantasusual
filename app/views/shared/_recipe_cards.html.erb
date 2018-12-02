@@ -8,11 +8,22 @@
   <% end %>
   <h2><%= recipe.name %></h2>
   <% if recipe.cooking_time %>
-  <p>Cooking time: <%= recipe.cooking_time %> mins</p>
+  <p><span class="section_title">Cooking time:</span> <%= recipe.cooking_time %> mins</p>
   <% end %>
   <% if recipe.servings %>
-  <p>Servings: <%= recipe.servings %></p>
+  <p><span class="section_title">Servings:</span> <%= recipe.servings %></p>
   <% end %>
+
+  <% re = RecipeEquipment.where(recipe_id: recipe.id) %>
+  <% if re.exists? %>
+  <p>
+    <span class="section_title">Requires:</span>
+    <% re.each do |e| %>
+      <%= e.equipment.name %>,
+    <% end %>
+  </p>
+  <% end %>
+
   <div class="floated_images_clear"></div>
 </li>
 </div>

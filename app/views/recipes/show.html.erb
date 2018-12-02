@@ -1,5 +1,10 @@
 <div class="global_wrapper">
-<h1 class="foreground_element"><%= @recipe.name %></h1>
+  <div class="foreground_element">
+<h1><%= @recipe.name %></h1>
+  <% @categories.each do |cat| %>
+    |<%= cat.category.name %>|
+  <% end %>
+</div>
 
 <% if @recipe[:photo] %>
 <div class="foreground_element">
@@ -8,32 +13,24 @@
 <% end %>
 
 <div class="foreground_element">
-<p>Servings: <%= @recipe.servings %></p>
+<p><span class="section_title">Servings:</span> <%= @recipe.servings %></p>
 
-<p>Cooking time: <%= @recipe.cooking_time %> mins</p>
+<p><span class="section_title">Cooking time:</span> <%= @recipe.cooking_time %> mins</p>
 
-<p>Equipment needed:</p>
-<ul>
+<% if @equipments.exists? %>
+<p><span class="section_title">Requires:</span>
   <% @equipments.each do |eq| %>
-    <li>
-      <%= eq.equipment.name %>
-    </li>
+      <%= eq.equipment.name %>,
   <% end %>
-</ul>
-
-<p>Categories:</p>
-<ul>
-  <% @categories.each do |cat| %>
-    <li><%= cat.category.name %></li>
-  <% end %>
-</ul>
+</p>
+<% end %>
 </div>
 
 <div class="foreground_element">
-<p>Ingredients:</p>
+<h3>Ingredients</h3>
 <ul>
 <% @amounts.each do |amount| %>
-  <li><%= amount.ingredient.name %>, <%= amount.size %> <%= amount.unit.measurement %><% if amount.preparation_method != nil %>,<%= amount.preparation_method.name %><% end %><% if amount.optional %>,
+  <li><%= amount.ingredient.name.capitalize %>, <%= amount.size %> <%= amount.unit.measurement %><% if amount.preparation_method != nil %>, <%= amount.preparation_method.name %><% end %><% if amount.optional %>,
     (optional)
     <% end %>
   </li>
@@ -42,7 +39,8 @@
 </div>
 
 <div class="foreground_element">
-<p>Method: <%= @recipe.method %></p>
+<h3>Method</h3>
+  <p><%= @recipe.method %></p>
 </div>
 
 <%= link_to profile_path(@recipe.user.profile) do %>
