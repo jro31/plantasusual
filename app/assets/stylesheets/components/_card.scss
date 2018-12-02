@@ -9,7 +9,25 @@
 
 // THIS ENSURES THAT THE CONTAINING ELEMENT CONTINUES UNTIL THE END OF ANY FLOATED IMAGES
 .recipe_index_cards div.floated_images_clear {
-    clear: both;
-    margin: 0;
-    padding: 0;
+  clear: both;
+  margin: 0;
+  padding: 0;
+}
+
+.star {
+  float: right;
+  font-size: 30px;
+  margin: 20px;
+}
+
+.full_star a {
+  color: #FFD700;
+}
+
+.full_star a:hover {
+  color: black;
+}
+
+.empty_star a:hover {
+  color: #FFD700;
 }

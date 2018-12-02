@@ -8,5 +8,6 @@ Rails.application.routes.draw do
     resources :recipe_categories, only: [:new, :create]
     resources :amounts, only: [:new, :create]
     resources :recipe_equipments, only: [:new, :create]
+    resources :favourites, only: [:create, :destroy]
   end
 end

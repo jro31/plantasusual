@@ -1,5 +1,23 @@
 <ul class="recipe_index_cards">
 <% @recipes.each do |recipe| %>
+
+<% if current_user && recipe.user != current_user %>
+  <% favs = Favourite.where(user: current_user, recipe: recipe).take %>
+  <% if favs %>
+    <div class="star full_star">
+      <%= link_to recipe_favourite_path(recipe, favs.id), method: :delete do %>
+        <i class="fas fa-star"></i>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="star empty_star">
+      <%= link_to recipe_favourites_path(recipe), method: :post do %>
+        <i class="far fa-star"></i>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
 <%= link_to recipe_path(recipe) do %>
 <div class="foreground_element">
 <li>
