@@ -80,11 +80,6 @@ puts "Generating reviews..."
   Review.create!(body: Faker::GreekPhilosophers.quote, user_id: users.sample.id, recipe_id: recipes.sample.id)
 end
 
-puts "Generating user ratings..."
-100.times do
-  UserRating.create!(score: rand(1..5), user_id: users.sample.id, recipe_id: recipes.sample.id)
-end
-
 puts "Generating favourites..."
 42.times do |n|
   Favourite.create!(recipe_id: recipes[n].id, user_id: users[rand(0..10)].id, star: true)

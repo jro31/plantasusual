@@ -165,7 +165,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="33" y="358" name="favourite">
+<table x="159" y="134" name="favourite">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -180,25 +180,6 @@
 <row name="star" null="1" autoincrement="0">
 <datatype>BOOLEAN</datatype>
 <default>NULL</default></row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
-<table x="268" y="79" name="user_rating">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="score" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="user_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="users" row="id" />
-</row>
-<row name="recipe_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="recipes" row="id" />
-</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -222,7 +203,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="975" y="75" name="categories">
+<table x="851" y="104" name="categories">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -233,7 +214,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="716" y="141" name="recipe_categories">
+<table x="556" y="127" name="recipe_categories">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -249,7 +230,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="133" y="550" name="profile">
+<table x="133" y="481" name="profile">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
