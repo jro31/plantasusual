@@ -18,8 +18,12 @@ class RecipesController < ApplicationController
 
   def index
     if params[:query].present?
-      sql_query = "name ILIKE :query OR method ILIKE :query"
-      @recipes = Recipe.where(sql_query, query: "%#{params[:query]}%")
+      sql_query = " \
+        recipes.name ILIKE :query \
+        OR recipes.method ILIKE :query \
+        OR users.username ILIKE :query \
+        "
+      @recipes = Recipe.joins(:user).where(sql_query, query: "%#{params[:query]}%")
     else
       @recipes = Recipe.all
     end
