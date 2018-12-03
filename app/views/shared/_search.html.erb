@@ -1,11 +1,11 @@
 <div class="global_wrapper">
   <div class="search_bar">
-<%= form_tag recipes_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Search recipes"
-  %>
-<% end %>
-</div>
+    <%= form_tag recipes_path, method: :get do %>
+      <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search recipes"
+      %>
+    <% end %>
+  </div>
 </div>
