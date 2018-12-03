@@ -1,5 +1,6 @@
 class RecipeEquipmentsController < ApplicationController
   def new
+    @search_bar_hide = true
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_equipment = RecipeEquipment.new
   end

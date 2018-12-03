@@ -1,7 +1,12 @@
 <div class="global_wrapper">
   <div class="foreground_element">
     <% if @user == current_user %>
-      <h1>My recipes </h1>
+      <% if @user.first_name != "" %>
+        <h1>Hi <%= @user.first_name %></h1>
+        <h3>your recipes:</h3>
+      <% else %>
+        <h1>My recipes</h1>
+      <% end %>
     <% else %>
       <h1><%= @user.username %>'s recipes</h1>
     <% end %>
@@ -12,7 +17,7 @@
   <% if @favourites.exists? %>
     <div class="foreground_element">
       <% if @user == current_user %>
-        <h2>My favourites</h2>
+        <h2>Your favourites</h2>
       <% else %>
         <h2><%= @user.username %>'s favourites</h2>
       <% end %>

@@ -21,7 +21,7 @@ Unit.destroy_all
 
 puts "Generating equipment..."
 equipment_array = ['blender', 'food processor', 'oven', 'stove', 'skillet', 'baking dish', 'grill', 'mixing bowl', 'muffin tray', 'cake tin', 'saucepan']
-equipment_array.sort.each do |e|
+equipment_array.sort.capitalize.each do |e|
   Equipment.create(name: e)
 end
 
@@ -32,7 +32,7 @@ end
 
 puts "Generating categories..."
 categories_array = ['dessert', 'healthy', 'breakfast', 'gluten-free', 'grain', 'smoothie', 'main', 'side', 'condiment', 'salad', 'soup', 'sandwich', 'fast food', 'snack', 'paleo', 'stew', 'pasta', 'curry', 'baked']
-categories_array.sort.each do |c|
+categories_array.sort.capitalize.each do |c|
   Category.create!(name: c)
 end
 

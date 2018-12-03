@@ -2,6 +2,7 @@ class RecipesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def new
+    @search_bar_hide = true
     @recipe = Recipe.new
   end
 
@@ -41,6 +42,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @search_bar_hide = true
     @recipe = Recipe.find(params[:id])
     @times = []
     180.times do |n|

@@ -8,3 +8,9 @@ class ProfilesController < ApplicationController
     @favourites = Favourite.where(user: params[:id])
   end
 end
+
+private
+
+def profile_params
+  params.permit(:user_id)
+end

@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_create :create_profile
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,4 +14,10 @@ class User < ApplicationRecord
   # validates :last_name, presence: false, format: { with: /[a-zA-Z]{2,50}/, message: "must use letters only" }
 
   mount_uploader :profile_picture, PhotoUploader
+
+  private
+
+  def create_profile
+    Profile.create(user_id: self.id)
+  end
 end
