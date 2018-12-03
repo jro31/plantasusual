@@ -1,9 +1,14 @@
 <%= simple_form_for [@recipe, @amount], html: { class: 'form-inline' } do |f| %>
 <div class="foreground_element">
+  <p>
+    For example:<br />
+    4 | cloves | garlic | crushed<br />
+    Half | &#160;&#160;&#160; | onion | chopped
+  </p>
   <div class="form_row">
+  <%= f.input :size, label: false, placeholder: 'Amount', input_html: { style: 'width: 110px' } %> x
+  <%= f.association :unit, label_method: :measurement, label: false %>
   <%= f.input :ingredient, label: false, placeholder: 'Ingredient' %>
-  <%= f.input :size, label: false, placeholder: 'Amount', input_html: { style: 'width: 110px' } %>
-  <%= f.association :unit, label_method: :measurement, label: false, prompt: 'unit' %>
   <%= f.association :preparation_method, label: false, prompt: 'none' %>
 </div>
   <div class="form_row">

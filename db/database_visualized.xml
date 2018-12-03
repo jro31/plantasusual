@@ -152,7 +152,7 @@
 <default>NULL</default><relation table="preparation_methods" row="id" />
 </row>
 <row name="size" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>TEXT</datatype>
 <default>NULL</default></row>
 <row name="units_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>

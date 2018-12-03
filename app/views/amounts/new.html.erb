@@ -7,7 +7,10 @@
   <h2>Add ingredients</h2>
 <ul>
   <% @recipe_amounts.each do |ra| %>
-    <li><%= ra.ingredient.name.capitalize %>, <%= ra.size %> <%= ra.unit.measurement %><% if ra.preparation_method %>,
+    <li><%= ra.size %>
+      x
+      <% if ra.unit %><%= ra.unit.measurement %> of<% end %>
+      <%= ra.ingredient.name.downcase %><% if ra.preparation_method %>,
         <%= ra.preparation_method.name %>
       <% end %>
       <% if ra.optional %>

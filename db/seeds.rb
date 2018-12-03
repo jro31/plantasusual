@@ -31,7 +31,7 @@ end
 # end
 
 puts "Generating categories..."
-categories_array = ['Dessert', 'Healthy', 'Breakfast', 'Gluten-free', 'Grain', 'Smoothie', 'Main', 'Side', 'Condiment', 'Salad', 'Soup', 'Sandwich', 'Fast food', 'Snack', 'Paleo', 'Stew', 'Pasta', 'Curry', 'Baked', 'High-protein']
+categories_array = ['Dessert', 'Healthy', 'Breakfast', 'Gluten-free', 'Grain', 'Smoothie', 'Main', 'Side', 'Condiment', 'Salad', 'Soup', 'Sandwich', 'Fast food', 'Snack', 'Paleo', 'Stew', 'Pasta', 'Curry', 'Baked', 'High-protein', 'Dip']
 categories_array.sort.each do |c|
   Category.create!(name: c)
 end
@@ -56,13 +56,13 @@ end
 # end
 
 puts "Generating preparation methods..."
-prep_methods = ['chopped', 'seeded', 'rinsed', 'quartered', 'diced', 'toasted', 'ground', 'shelled', 'soaked', 'dried']
+prep_methods = ['chopped', 'seeded', 'rinsed', 'quartered', 'diced', 'toasted', 'ground', 'shelled', 'soaked', 'dried', 'crushed', 'squeezed']
 prep_methods.sort.each do |pm|
   PreparationMethod.create!(name: pm)
 end
 
 puts "Generating units..."
-units = ['grams', 'millilitres', 'pinch', 'splash', 'teaspoons', 'tablespoons', 'cups', 'dash', 'litres', 'kilograms', 'pieces', 'inches', 'centimetres', 'cans', 'packs']
+units = ['grams', 'millilitres', 'pinch(es)', 'splash(es)', 'teaspoon(s)', 'tablespoon(s)', 'cup(s)', 'dash(es)', 'litre(s)', 'kilogram(s)', 'piece(s)', 'inche(s)', 'centimetre(s)', 'can(s)', 'pack(s)', 'clove(s)', 'whole']
 units.sort.each do |unit|
   Unit.create!(measurement: unit)
 end
