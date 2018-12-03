@@ -13,8 +13,8 @@
   <% images = ['fruit.jpg', 'chop.jpg', 'fruity.jpg'] %>
   <body style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path images.sample %>'); background-size: 100vw 100vh; background-repeat: no-repeat; background-attachment: fixed">
     <%= render 'shared/flashes' %>
-    <%= render 'shared/logo' unless defined? @hide %>
-    <%= render 'shared/search' unless defined? @hide %>
+    <%= render 'shared/logo' unless defined? @logo_hide %>
+    <%= render 'shared/search' unless defined? @search_bar_hide %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
