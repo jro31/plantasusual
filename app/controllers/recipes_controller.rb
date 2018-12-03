@@ -26,9 +26,9 @@ class RecipesController < ApplicationController
         OR equipment.name ILIKE :query \
         OR categories.name ILIKE :query \
         "
-      @recipes = Recipe.joins(:user, :ingredients, :equipment, :categories).where(sql_query, query: "%#{params[:query]}%")
+      @recipes = Recipe.joins(:user, :ingredients, :equipment, :categories).where(sql_query, query: "%#{params[:query]}%").order(:name)
     else
-      @recipes = Recipe.all
+      @recipes = Recipe.all.order(:name)
     end
   end
 

@@ -4,6 +4,6 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
     @user = @profile.user
-    @recipes = Recipe.where(user_id: params[:id])
+    @recipes = Recipe.where(user_id: params[:id]).order(:name)
   end
 end
