@@ -1,50 +1,50 @@
 <ul class="recipe_index_cards">
-<% @recipes.each do |recipe| %>
+  <% @recipes.each do |recipe| %>
 
-<% if current_user && recipe.user != current_user %>
-  <% favs = Favourite.where(user: current_user, recipe: recipe).take %>
-  <% if favs %>
-    <div class="star full_star">
-      <%= link_to recipe_favourite_path(recipe, favs.id), method: :delete do %>
-        <i class="fas fa-star"></i>
+    <% if current_user && recipe.user != current_user %>
+      <% favs = Favourite.where(user: current_user, recipe: recipe).take %>
+      <% if favs %>
+        <div class="star full_star">
+          <%= link_to recipe_favourite_path(recipe, favs.id), method: :delete do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="star empty_star">
+          <%= link_to recipe_favourites_path(recipe), method: :post do %>
+            <i class="far fa-star"></i>
+          <% end %>
+        </div>
       <% end %>
-    </div>
-  <% else %>
-    <div class="star empty_star">
-      <%= link_to recipe_favourites_path(recipe), method: :post do %>
-        <i class="far fa-star"></i>
-      <% end %>
-    </div>
-  <% end %>
-<% end %>
-
-<%= link_to recipe_path(recipe) do %>
-<div class="foreground_element">
-<li>
-  <% if recipe[:photo] %>
-  <%= cl_image_tag recipe.photo, height: 200, width: 200, crop: :fill %>
-  <% end %>
-  <h2><%= recipe.name %></h2>
-  <% if recipe.cooking_time %>
-  <p><span class="section_title">Cooking time:</span> <%= recipe.cooking_time %> mins</p>
-  <% end %>
-  <% if recipe.servings %>
-  <p><span class="section_title">Servings:</span> <%= recipe.servings %></p>
-  <% end %>
-
-  <% re = RecipeEquipment.where(recipe_id: recipe.id) %>
-  <% if re.exists? %>
-  <p>
-    <span class="section_title">Requires:</span>
-    <% re.each do |e| %>
-      <%= e.equipment.name %>,
     <% end %>
-  </p>
-  <% end %>
 
-  <div class="floated_images_clear"></div>
-</li>
-</div>
-<% end %>
-<% end %>
+    <%= link_to recipe_path(recipe) do %>
+      <div class="foreground_element">
+        <li>
+          <% if recipe[:photo] %>
+            <%= cl_image_tag recipe.photo, height: 200, width: 200, crop: :fill %>
+          <% end %>
+          <h2><%= recipe.name %></h2>
+          <% if recipe.cooking_time %>
+            <p><span class="section_title">Cooking time:</span> <%= recipe.cooking_time %> mins</p>
+          <% end %>
+          <% if recipe.servings %>
+            <p><span class="section_title">Servings:</span> <%= recipe.servings %></p>
+          <% end %>
+
+          <% re = RecipeEquipment.where(recipe_id: recipe.id) %>
+          <% if re.exists? %>
+            <p>
+              <span class="section_title">Requires:</span>
+              <% re.each do |e| %>
+                <%= e.equipment.name %>,
+              <% end %>
+            </p>
+          <% end %>
+
+          <div class="floated_images_clear"></div>
+        </li>
+      </div>
+    <% end %>
+  <% end %>
 </ul>

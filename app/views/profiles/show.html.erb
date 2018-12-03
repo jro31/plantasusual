@@ -1,12 +1,29 @@
 <div class="global_wrapper">
   <div class="foreground_element">
     <% if @user == current_user %>
-    <h1>My recipes </h1>
+      <h1>My recipes </h1>
     <% else %>
-<h1><%= @user.username %>'s recipes</h1>
-<% end %>
-</div>
+      <h1><%= @user.username %>'s recipes</h1>
+    <% end %>
+  </div>
 
-<%= render 'shared/recipe_cards' %>
+  <%= render 'shared/recipe_cards' %>
+
+  <% if @favourites.exists? %>
+    <div class="foreground_element">
+      <% if @user == current_user %>
+        <h2>My favourites</h2>
+      <% else %>
+        <h2><%= @user.username %>'s favourites</h2>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% @recipes = nil %>
+
+  <% @favourites.each do |favourite| %>
+    <% @recipes = Recipe.where(id: favourite.recipe_id) %>
+    <%= render 'shared/recipe_cards' %>
+  <% end %>
 
 </div>
