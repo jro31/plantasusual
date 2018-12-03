@@ -1,4 +1,16 @@
 .global_wrapper {
-  margin: 0 20vw 0 20vw;
+  margin: 0 20vw;
   text-align: center;
+}
+
+@media (max-width: 1200px) {
+  .global_wrapper {
+    margin: 0 10vw;
+  }
+}
+
+@media (max-width: 800px) {
+  .global_wrapper {
+    margin: 0 5vw;
+  }
 }

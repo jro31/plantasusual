@@ -2,18 +2,22 @@
   border: solid 2px black;
   box-shadow: 10px 10px 8px rgba(255, 255, 255, 0.5);
   margin: 20px 0;
+  background-color: white;
 }
 
 .search_bar:hover {
   box-shadow: 10px 10px 8px rgba(0, 255, 0, 0.5);
 }
 
-.search_button {
-  width: 5%;
-  float: right;
-}
+// .search_button {
+//   width: 5%;
+//   float: right;
+// }
 
 .form-control {
   display: inline;
   width: 95%;
+  box-shadow: none;
+  border: none;
+  border-radius: none;
 }

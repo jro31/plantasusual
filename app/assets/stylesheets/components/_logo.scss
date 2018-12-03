@@ -7,8 +7,17 @@
 
 .logo-left {
   position: fixed;
-  left: 0;
   top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+@media (max-width: 800px) {
+  .logo-left {
+    position: relative;
+    width: 50px;
+    margin: 0 auto;
+  }
 }
 
 /* Basic navbar item */
