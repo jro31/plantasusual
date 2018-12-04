@@ -1,7 +1,11 @@
 <div class="global_wrapper">
 <div class="foreground_element">
+  <% if @recipe.method == nil %>
 <h1>Add the method</h1>
+<% else %>
+<h1>Edit the method</h1>
+<% end %>
 </div>
 
-<%= render 'form_method', recipe: @recipe %>
+<%= render 'form', recipe: @recipe %>
 </div>

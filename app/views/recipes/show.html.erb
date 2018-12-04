@@ -24,6 +24,8 @@
   <% end %>
 </div>
 
+<!-- "recipe_category"=>{"category_id"=>["", "1", "3", "20"]} -->
+
 <% if @recipe[:photo] %>
 <div class="foreground_element">
   <%= cl_image_tag @recipe.photo, height: 300, width: 400, crop: :fill %>
