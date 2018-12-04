@@ -1,23 +1,23 @@
 # puts "Deleting recipes..."
 # Recipe.destroy_all
 
-puts "Deleting equipment..."
-Equipment.destroy_all
+# puts "Deleting equipment..."
+# Equipment.destroy_all
 
 # puts "Deleting ingredients..."
 # Ingredient.destroy_all
 
-puts "Deleting categories..."
-Category.destroy_all
+# puts "Deleting categories..."
+# Category.destroy_all
 
 # puts "Deleting users..."
 # User.destroy_all
 
-puts "Deleting preparation methods"
-PreparationMethod.destroy_all
+# puts "Deleting preparation methods"
+# PreparationMethod.destroy_all
 
-puts "Deleting units"
-Unit.destroy_all
+# puts "Deleting units"
+# Unit.destroy_all
 
 puts "Generating equipment..."
 equipment_array = ['Blender', 'Food processor', 'Oven', 'Stove', 'Skillet', 'Baking dish', 'Grill', 'Mixing bowl', 'Muffin tray', 'Cake tin', 'Saucepan']
@@ -62,7 +62,7 @@ prep_methods.sort.each do |pm|
 end
 
 puts "Generating units..."
-units = ['grams', 'millilitres', 'pinch(es)', 'splash(es)', 'teaspoon(s)', 'tablespoon(s)', 'cup(s)', 'dash(es)', 'litre(s)', 'kilogram(s)', 'piece(s)', 'inche(s)', 'centimetre(s)', 'can(s)', 'pack(s)', 'clove(s)', 'whole']
+units = ['grams', 'millilitres', 'pinch(es)', 'splash(es)', 'teaspoon(s)', 'tablespoon(s)', 'cup(s)', 'dash(es)', 'litre(s)', 'kilogram(s)', 'piece(s)', 'inch(es)', 'centimetre(s)', 'can(s)', 'pack(s)', 'clove(s)', 'whole', 'large', 'medium', 'small']
 units.sort.each do |unit|
   Unit.create!(measurement: unit)
 end
