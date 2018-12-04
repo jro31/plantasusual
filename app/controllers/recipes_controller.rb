@@ -8,6 +8,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.name = @recipe.name.capitalize
     @recipe.user = current_user
     if @recipe.valid?
       @recipe.save

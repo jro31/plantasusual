@@ -1,6 +1,8 @@
 <ul class="recipe_index_cards">
   <% @recipes.each do |recipe| %>
 
+  <% if recipe.method != nil %>
+
     <% if current_user && recipe.user != current_user %>
       <% favs = Favourite.where(user: current_user, recipe: recipe).take %>
       <% if favs %>
@@ -45,6 +47,7 @@
           <div class="floated_images_clear"></div>
         </li>
       </div>
+    <% end %>
     <% end %>
   <% end %>
 </ul>
