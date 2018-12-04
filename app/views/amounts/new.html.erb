@@ -8,8 +8,10 @@
 <ul>
   <% @recipe_amounts.each do |ra| %>
     <li>
+      <% if ra.size != "" %>
       <%= ra.size %>
       x
+      <% end %>
       <% if ra.unit %><%= ra.unit.measurement %>
       <% if ra.unit.measurement != "whole" && ra.unit.measurement != "large" && ra.unit.measurement != "medium" && ra.unit.measurement != "small" %>of<% end %><% end %>
       <%= ra.ingredient.name.downcase %><% if ra.preparation_method %>,
