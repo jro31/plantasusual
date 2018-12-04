@@ -6,25 +6,7 @@
 <div class="foreground_element">
   <h2>Add ingredients</h2>
 <ul>
-  <% @recipe_amounts.each do |ra| %>
-    <li>
-      <% if ra.size != "" %>
-      <%= ra.size %>
-      x
-      <% end %>
-      <% if ra.unit %><%= ra.unit.measurement %>
-      <% if ra.unit.measurement != "whole" && ra.unit.measurement != "large" && ra.unit.measurement != "medium" && ra.unit.measurement != "small" %>of<% end %><% end %>
-      <%= ra.ingredient.name.downcase %><% if ra.preparation_method %>,
-        <%= ra.preparation_method.name %>
-      <% end %>
-      <% if ra.optional %>
-        (optional)
-      <% end %>
-      <%= link_to recipe_amount_path(@recipe, ra), method: :delete, class: 'link_right' do %>
-        <i class="fas fa-times"></i>
-      <% end %>
-    </li>
-  <% end %>
+  <%= render 'shared/amounts' %>
 </ul>
 </div>
 

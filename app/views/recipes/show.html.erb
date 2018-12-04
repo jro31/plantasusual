@@ -29,12 +29,7 @@
 <div class="foreground_element">
 <h3>Ingredients</h3>
 <ul>
-<% @amounts.each do |amount| %>
-  <li><%= amount.ingredient.name.capitalize %>, <%= amount.size %> <%= amount.unit.measurement %><% if amount.preparation_method != nil %>, <%= amount.preparation_method.name %><% end %><% if amount.optional %>,
-    (optional)
-    <% end %>
-  </li>
-<% end %>
+<%= render 'shared/amounts' %>
 </ul>
 </div>
 

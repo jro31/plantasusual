@@ -3,7 +3,7 @@ class AmountsController < ApplicationController
     @search_bar_hide = true
     @recipe = Recipe.find(params[:recipe_id])
     @recipe_categories = RecipeCategory.where(recipe_id: params[:recipe_id])
-    @recipe_amounts = Amount.where(recipe_id: params[:recipe_id])
+    @amounts = Amount.where(recipe_id: params[:recipe_id])
     @amount = Amount.new
   end
 

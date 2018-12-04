@@ -1,0 +1,22 @@
+<% @amounts.each do |a| %>
+    <li>
+      <% if a.size != "" %>
+      <%= a.size %>
+      x
+      <% end %>
+      <% if a.unit %><%= a.unit.measurement %>
+      <% if a.unit.measurement != "whole" && a.unit.measurement != "large" && a.unit.measurement != "medium" && a.unit.measurement != "small" %>of<% end %><% end %>
+      <%= a.ingredient.name.downcase %><% if a.preparation_method %>,
+        <%= a.preparation_method.name %>
+      <% end %>
+      <% if a.optional %>
+        (optional)
+      <% end %>
+
+      <% if params[:controller] == "amounts" && params[:action] == "new" %>
+        <%= link_to recipe_amount_path(@recipe, a), method: :delete, class: 'link_right' do %>
+          <i class="fas fa-times"></i>
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
