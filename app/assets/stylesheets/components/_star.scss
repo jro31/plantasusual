@@ -1,0 +1,17 @@
+.star {
+  float: right;
+  font-size: 30px;
+  margin: 20px;
+}
+
+.full_star a {
+  color: #FFD700;
+}
+
+.full_star a:hover {
+  color: black;
+}
+
+.empty_star a:hover {
+  color: #FFD700;
+}

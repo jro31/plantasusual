@@ -51,6 +51,9 @@
 <% end %>
 
 <div class="foreground_element">
+  <% if @recipe.user == current_user %>
+    <%= link_to 'edit', new_recipe_amount_path(@recipe), class: 'edit_button' %>
+  <% end %>
 <h3>Ingredients</h3>
 <ul>
 <%= render 'shared/amounts' %>
