@@ -7,11 +7,11 @@ class RecipeEquipmentsController < ApplicationController
 
   def create
     selected_equipments = params[:recipe_equipment][:equipment_id]
+    @recipe = Recipe.find(params[:recipe_id])
     selected_equipments.each do |equipment|
       if equipment != ""
         selected_equipment = { "equipment_id" => equipment }
         @recipe_equipment = RecipeEquipment.new(selected_equipment)
-        @recipe = Recipe.find(params[:recipe_id])
         @recipe_equipment.recipe = @recipe
         @recipe_equipment.save
       end

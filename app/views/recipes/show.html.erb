@@ -30,10 +30,15 @@
 </div>
 <% end %>
 
+<% if @recipe.servings || @recipe.cooking_time || @equipments.exists? %>
 <div class="foreground_element">
+  <% if @recipe.servings %>
 <p><span class="section_title">Servings:</span> <%= @recipe.servings %></p>
+<% end %>
 
+<% if @recipe.cooking_time %>
 <p><span class="section_title">Cooking time:</span> <%= @recipe.cooking_time %> mins</p>
+<% end %>
 
 <% if @equipments.exists? %>
 <p><span class="section_title">Requires:</span>
@@ -43,6 +48,7 @@
 </p>
 <% end %>
 </div>
+<% end %>
 
 <div class="foreground_element">
 <h3>Ingredients</h3>
