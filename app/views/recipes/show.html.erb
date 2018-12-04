@@ -1,4 +1,22 @@
 <div class="global_wrapper">
+
+<% if current_user && @recipe.user != current_user %>
+      <% favs = Favourite.where(user: current_user, recipe: @recipe).take %>
+      <% if favs %>
+        <div class="star full_star">
+          <%= link_to recipe_favourite_path(@recipe, favs.id), method: :delete do %>
+            <i class="fas fa-star"></i>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="star empty_star">
+          <%= link_to recipe_favourites_path(@recipe), method: :post do %>
+            <i class="far fa-star"></i>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+
   <div class="foreground_element">
 <h1><%= @recipe.name %></h1>
   <% @categories.each do |cat| %>
