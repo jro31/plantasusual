@@ -12,7 +12,14 @@
     <% end %>
   </div>
 
+  <% if @recipes.exists? %>
   <%= render 'shared/recipe_cards' %>
+  <% else %>
+  <div class="foreground_element">
+    <p>Nothing but sadness here</p>
+    <%= link_to 'Add a recipe instead', new_recipe_path, class: 'btn btn-warning' %>
+  </div>
+  <% end %>
 
   <% if @favourites.exists? %>
     <div class="foreground_element">
