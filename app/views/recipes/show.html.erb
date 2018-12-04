@@ -30,26 +30,6 @@
 </div>
 <% end %>
 
-<% if @recipe.servings || @recipe.cooking_time || @equipments.exists? %>
-<div class="foreground_element">
-  <% if @recipe.servings %>
-<p><span class="section_title">Servings:</span> <%= @recipe.servings %></p>
-<% end %>
-
-<% if @recipe.cooking_time %>
-<p><span class="section_title">Cooking time:</span> <%= @recipe.cooking_time %> mins</p>
-<% end %>
-
-<% if @equipments.exists? %>
-<p><span class="section_title">Requires:</span>
-  <% @equipments.each do |eq| %>
-      <%= eq.equipment.name %>,
-  <% end %>
-</p>
-<% end %>
-</div>
-<% end %>
-
 <div class="foreground_element">
   <% if @recipe.user == current_user %>
     <%= link_to 'edit', new_recipe_amount_path(@recipe), class: 'edit_button' %>
@@ -60,9 +40,33 @@
 </ul>
 </div>
 
+<% if @equipments.exists? %>
 <div class="foreground_element">
+<p><span class="section_title">Requires:</span>
+  <% @equipments.each do |eq| %>
+      <%= eq.equipment.name %>,
+  <% end %>
+</p>
+</div>
+<% end %>
+
+<div class="foreground_element">
+  <% if @recipe.user == current_user %>
+    <%= link_to 'edit', edit_recipe_path(@recipe), class: 'edit_button' %>
+  <% end %>
+    <% if @recipe.servings %>
+<p><span class="section_title">Servings:</span> <%= @recipe.servings %>
+<% end %>
+&#160;&#160;&#160;
+<% if @recipe.cooking_time %>
+<span class="section_title">Cooking time:</span> <%= @recipe.cooking_time %> mins</p>
+<% end %>
+<div class="method_outer">
 <h3>Method</h3>
+<div class="method_inner">
   <p><%= simple_format(@recipe.method) %></p>
+  </div>
+</div>
 </div>
 
 <%= link_to profile_path(@recipe.user.profile) do %>
