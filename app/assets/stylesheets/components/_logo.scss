@@ -59,10 +59,20 @@
   height: 10px;
   width: 10px;
   position: absolute;
-  left: 10px;
+  left: 18px;
   top: -6px;
   background-color: white;
   transform: rotate(45deg);
   border-left: 1px solid #E6E6E6;
   border-top: 1px solid #E6E6E6;
+}
+
+@media (max-width: 800px) {
+  .logo-dropdown-menu:before {
+    content: none;
+  }
+
+  .dropdown-menu-left {
+    left: -50px;
+  }
 }
