@@ -30,6 +30,12 @@ class AmountsController < ApplicationController
       redirect_to new_recipe_amount_path
     end
   end
+
+  def destroy
+    @amount = Amount.find(params[:id])
+    @amount.destroy
+    redirect_to new_recipe_amount_path(params[:recipe_id])
+  end
 end
 
 private

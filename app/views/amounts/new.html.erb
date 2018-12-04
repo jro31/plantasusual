@@ -20,6 +20,9 @@
       <% if ra.optional %>
         (optional)
       <% end %>
+      <%= link_to recipe_amount_path(@recipe, ra), method: :delete, class: 'link_right' do %>
+        <i class="fas fa-times"></i>
+      <% end %>
     </li>
   <% end %>
 </ul>

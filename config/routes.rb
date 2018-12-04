@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :profiles, only: [:show]
   resources :recipes do
     resources :recipe_categories, only: [:new, :create]
-    resources :amounts, only: [:new, :create]
+    resources :amounts, only: [:new, :create, :destroy]
     resources :recipe_equipments, only: [:new, :create]
     resources :favourites, only: [:create, :destroy]
     resources :comments, only: [:create]
