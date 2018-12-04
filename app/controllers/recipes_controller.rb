@@ -20,15 +20,8 @@ class RecipesController < ApplicationController
 
   def index
     if params[:query].present?
-      sql_query = " \
-        recipes.name ILIKE :query \
-        OR recipes.method ILIKE :query \
-        OR users.username ILIKE :query \
-        OR ingredients.name ILIKE :query \
-        OR equipment.name ILIKE :query \
-        OR categories.name ILIKE :query \
-        "
-      @recipes = Recipe.joins(:user, :ingredients, :equipment, :categories).where(sql_query, query: "%#{params[:query]}%").order(:name)
+      sql_query = "name ILIKE :query OR method ILIKE :query"
+      @recipes = Recipe.where(sql_query, query: "%#{params[:query]}%")
     else
       @recipes = Recipe.all.order(:name)
     end
