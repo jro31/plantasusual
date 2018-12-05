@@ -24,11 +24,11 @@
   <% end %>
 </div>
 
-<!-- "recipe_category"=>{"category_id"=>["", "1", "3", "20"]} -->
-
 <% if @recipe[:photo] %>
 <div class="foreground_element">
-  <%= cl_image_tag @recipe.photo, height: 300, width: 400, crop: :fill %>
+  <div class="recipe_show_photo">
+  <%= cl_image_tag(@recipe.photo, transformation: { dpr: "auto", responsive: true, width: "auto", crop: "scale", angle: 357}) %>
+</div>
 </div>
 <% end %>
 
@@ -53,9 +53,6 @@
 <% end %>
 
 <div class="foreground_element">
-  <% if @recipe.user == current_user %>
-    <%= link_to 'edit', edit_recipe_path(@recipe), class: 'edit_button' %>
-  <% end %>
     <% if @recipe.servings %>
 <p><span class="section_title">Servings:</span> <%= @recipe.servings %>
 <% end %>
@@ -63,12 +60,14 @@
 <% if @recipe.cooking_time %>
 <span class="section_title">Cooking time:</span> <%= @recipe.cooking_time %> mins</p>
 <% end %>
-<div class="method_outer">
-<h3>Method</h3>
-<div class="method_inner">
-  <p><%= simple_format(@recipe.method) %></p>
-  </div>
 </div>
+
+<div class="foreground_element">
+  <% if @recipe.user == current_user %>
+    <%= link_to 'edit', edit_recipe_path(@recipe), class: 'edit_button' %>
+  <% end %>
+<h3>Method</h3>
+  <p><%= simple_format(@recipe.method) %></p>
 </div>
 
 <%= link_to profile_path(@recipe.user.profile) do %>

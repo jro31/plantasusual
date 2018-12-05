@@ -11,22 +11,16 @@
   box-shadow: 10px 10px 8px rgba(0, 255, 0, 0.5);
 }
 
+.recipe_show_photo img {
+  max-width: 70%;
+  max-height: 350px;
+  border: solid 2px gray;
+}
+
 .edit_button {
   float: right;
 }
 
 .edit_button:hover {
   text-decoration: underline;
-}
-
-.method_outer {
-  border: solid 2px black;
-  background-color: rgb(230, 230, 230);
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-.method_inner {
-  background-color: white;
-  min-height: 100px;
 }
