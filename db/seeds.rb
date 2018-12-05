@@ -19,10 +19,13 @@
 # puts "Deleting units"
 # Unit.destroy_all
 
+
 puts "Generating equipment..."
 equipment_array = ['Blender', 'Food processor', 'Oven', 'Stove', 'Skillet', 'Baking dish', 'Grill', 'Mixing bowl', 'Muffin tray', 'Cake tin', 'Saucepan']
-equipment_array.sort.each do |e|
-  Equipment.create(name: e)
+equipment_array.each do |e|
+  unless Equipment.where(name: e.capitalize).exists?
+    Equipment.create!(name: e.capitalize)
+  end
 end
 
 # puts "Generating ingredients..."
@@ -32,8 +35,10 @@ end
 
 puts "Generating categories..."
 categories_array = ['Dessert', 'Healthy', 'Breakfast', 'Gluten-free', 'Grain', 'Smoothie', 'Main', 'Side', 'Condiment', 'Salad', 'Soup', 'Sandwich', 'Fast food', 'Snack', 'Paleo', 'Stew', 'Pasta', 'Curry', 'Baked', 'High-protein', 'Dip']
-categories_array.sort.each do |c|
-  Category.create!(name: c)
+categories_array.each do |c|
+  unless Category.where(name: c.capitalize).exists?
+    Category.create!(name: c.capitalize)
+  end
 end
 
 # puts "Generating users and recipes..."
@@ -56,15 +61,19 @@ end
 # end
 
 puts "Generating preparation methods..."
-prep_methods = ['chopped', 'seeded', 'rinsed', 'quartered', 'diced', 'toasted', 'ground', 'shelled', 'soaked', 'dried', 'crushed', 'squeezed']
-prep_methods.sort.each do |pm|
-  PreparationMethod.create!(name: pm)
+preparation_methods_array = ['chopped', 'seeded', 'rinsed', 'quartered', 'diced', 'toasted', 'ground', 'shelled', 'soaked', 'dried', 'crushed', 'squeezed']
+preparation_methods_array.each do |pm|
+  unless PreparationMethod.where(name: pm.downcase).exists?
+    PreparationMethod.create!(name: pm.downcase)
+  end
 end
 
 puts "Generating units..."
-units = ['grams', 'millilitres', 'pinch(es)', 'splash(es)', 'teaspoon(s)', 'tablespoon(s)', 'cup(s)', 'dash(es)', 'litre(s)', 'kilogram(s)', 'piece(s)', 'inch(es)', 'centimetre(s)', 'can(s)', 'pack(s)', 'clove(s)', 'whole', 'large', 'medium', 'small']
-units.sort.each do |unit|
-  Unit.create!(measurement: unit)
+units_array = ['gram', 'millilitre', 'pinch', 'splash', 'teaspoon', 'tablespoon', 'cup', 'dash', 'litre', 'kilogram', 'piece', 'inch', 'centimetre', 'can', 'pack', 'clove', 'whole', 'large', 'medium', 'small']
+units_array.each do |u|
+  unless Unit.where(measurement: u.downcase).exists?
+    Unit.create!(measurement: u.downcase)
+  end
 end
 
 # users = User.all
