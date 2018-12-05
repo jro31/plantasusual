@@ -24,3 +24,10 @@
 .edit_button:hover {
   text-decoration: underline;
 }
+
+// THIS ENSURES THAT THE PARENT ELEMENT CONTINUES UNTIL THE END OF ANY FLOATING ELEMENTS
+.floated_images_clear {
+  clear: both;
+  margin: 0;
+  padding: 0;
+}

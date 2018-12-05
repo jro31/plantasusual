@@ -10,12 +10,14 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.name = @recipe.name.capitalize
     @recipe.user = current_user
-    if @recipe.valid?
-      @recipe.save
-      redirect_to new_recipe_recipe_category_path(@recipe)
-    else
-      render :new
-    end
+    @recipe.save
+    redirect_to new_recipe_amount_path(@recipe)
+    # if @recipe.valid?
+    #   @recipe.save
+    #   redirect_to new_recipe_recipe_category_path(@recipe)
+    # else
+    #   render :new
+    # end
   end
 
   def index
@@ -30,7 +32,7 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @amounts = Amount.where(recipe_id: params[:id])
-    @categories = RecipeCategory.where(recipe_id: params[:id])
+    @categories = @recipe.categories
     @equipments = RecipeEquipment.where(recipe_id: params[:id])
     @comment = Comment.new
   end
@@ -56,5 +58,5 @@ end
 private
 
 def recipe_params
-  params.require(:recipe).permit(:photo, :method, :user_id, :name, :servings, :cooking_time)
+  params.require(:recipe).permit(:photo, :method, :user_id, :name, :servings, :cooking_time, category_ids:[])
 end
