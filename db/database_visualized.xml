@@ -108,7 +108,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="918" y="264" name="recipe_equipment">
+<table x="892" y="253" name="recipe_equipment">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -120,6 +120,9 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="equipment" row="id" />
 </row>
+<row name="status" null="1" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'false'</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -211,22 +214,6 @@
 <part>id</part>
 </key>
 </table>
-<table x="556" y="127" name="recipe_categories">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="categories_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="categories" row="id" />
-</row>
-<row name="recipes_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="recipes" row="id" />
-</row>
-<key type="PRIMARY" name="">
-<part>id</part>
-</key>
-</table>
 <table x="133" y="481" name="profiles">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
@@ -259,6 +246,18 @@
 <default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
+</key>
+</table>
+<table x="534" y="171" name="categories_recipes">
+<row name="category_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="categories" row="id" />
+</row>
+<row name="recipe_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="recipes" row="id" />
+</row>
+<key type="PRIMARY" name="">
 </key>
 </table>
 </sql>
