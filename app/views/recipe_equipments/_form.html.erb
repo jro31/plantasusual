@@ -1,6 +1,0 @@
-<%= simple_form_for [@recipe, @recipe_equipment] do |f| %>
-<div class="foreground_element">
-  <%= f.association :equipment, as: :check_boxes, label: "Does this recipe require any of the following equipment?", item_wrapper_class: 'checkboxes_inline' %>
-  <%= f.submit 'Add equipment', class: 'btn btn-primary' %>
-  </div>
-<% end %>

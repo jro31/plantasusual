@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
     @recipe.name = @recipe.name.capitalize
     @recipe.user = current_user
     @recipe.save
-    redirect_to new_recipe_amount_path(@recipe)
+    redirect_to edit_recipe_path(@recipe)
     # if @recipe.valid?
     #   @recipe.save
     #   redirect_to new_recipe_recipe_category_path(@recipe)
@@ -51,7 +51,13 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     @recipe.update(recipe_params)
-    redirect_to recipe_path(@recipe)
+    if @recipe.equipment.exists? == false
+      redirect_to edit_recipe_path(@recipe)
+    elsif @recipe.method == nil
+      redirect_to new_recipe_amount_path(@recipe)
+    else
+      redirect_to recipe_path(@recipe)
+    end
   end
 end
 
