@@ -17,10 +17,22 @@
   border: solid 2px gray;
 }
 
+.space_around {
+  display: flex;
+  justify-content: space-around;
+}
+
 .edit_button {
-  float: right;
+  // float: right;
 }
 
 .edit_button:hover {
   text-decoration: underline;
+}
+
+// THIS ENSURES THAT THE PARENT ELEMENT CONTINUES UNTIL THE END OF ANY FLOATING ELEMENTS
+.floated_images_clear {
+  clear: both;
+  margin: 0;
+  padding: 0;
 }

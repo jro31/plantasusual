@@ -34,12 +34,12 @@
             <p><span class="section_title">Servings:</span> <%= recipe.servings %></p>
           <% end %>
 
-          <% re = RecipeEquipment.where(recipe_id: recipe.id) %>
+          <% re = recipe.equipment %>
           <% if re.exists? %>
             <p>
               <span class="section_title">Requires:</span>
               <% re.each do |e| %>
-                <%= e.equipment.name %>,
+                <%= e.name %>,
               <% end %>
             </p>
           <% end %>

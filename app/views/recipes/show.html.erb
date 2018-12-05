@@ -1,101 +1,100 @@
 <div class="global_wrapper">
-
-<% if current_user && @recipe.user != current_user %>
-      <% favs = Favourite.where(user: current_user, recipe: @recipe).take %>
-      <% if favs %>
-        <div class="star full_star">
-          <%= link_to recipe_favourite_path(@recipe, favs.id), method: :delete do %>
-            <i class="fas fa-star"></i>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="star empty_star">
-          <%= link_to recipe_favourites_path(@recipe), method: :post do %>
-            <i class="far fa-star"></i>
-          <% end %>
-        </div>
-      <% end %>
+  <% if current_user && @recipe.user != current_user %>
+    <% favs = Favourite.where(user: current_user, recipe: @recipe).take %>
+    <% if favs %>
+      <div class="star full_star">
+        <%= link_to recipe_favourite_path(@recipe, favs.id), method: :delete do %>
+          <i class="fas fa-star"></i>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="star empty_star">
+        <%= link_to recipe_favourites_path(@recipe), method: :post do %>
+          <i class="far fa-star"></i>
+        <% end %>
+      </div>
     <% end %>
+  <% end %>
 
   <div class="foreground_element">
-<h1><%= @recipe.name %></h1>
-  <% @categories.each do |cat| %>
-    |<%= cat.category.name %>|
-  <% end %>
-</div>
-
-<% if @recipe[:photo] %>
-<div class="foreground_element">
-  <div class="recipe_show_photo">
-  <%= cl_image_tag(@recipe.photo, transformation: { dpr: "auto", responsive: true, width: "auto", crop: "scale", angle: 357}) %>
-</div>
-</div>
-<% end %>
-
-<div class="foreground_element">
-  <% if @recipe.user == current_user %>
-    <%= link_to 'edit', new_recipe_amount_path(@recipe), class: 'edit_button' %>
-  <% end %>
-<h3>Ingredients</h3>
-<ul>
-<%= render 'shared/amounts' %>
-</ul>
-</div>
-
-<% if @equipments.exists? %>
-<div class="foreground_element">
-<p><span class="section_title">Requires:</span>
-  <% @equipments.each do |eq| %>
-      <%= eq.equipment.name %>,
-  <% end %>
-</p>
-</div>
-<% end %>
-
-<div class="foreground_element">
-    <% if @recipe.servings %>
-<p><span class="section_title">Servings:</span> <%= @recipe.servings %>
-<% end %>
-&#160;&#160;&#160;
-<% if @recipe.cooking_time %>
-<span class="section_title">Cooking time:</span> <%= @recipe.cooking_time %> mins</p>
-<% end %>
-</div>
-
-<div class="foreground_element">
-  <% if @recipe.user == current_user %>
-    <%= link_to 'edit', edit_recipe_path(@recipe), class: 'edit_button' %>
-  <% end %>
-<h3>Method</h3>
-  <p><%= simple_format(@recipe.method) %></p>
-</div>
-
-<%= link_to profile_path(@recipe.user.profile) do %>
-<div class="foreground_element">
-<p>See all recipes by <%= @recipe.user.username %> </p>
-</div>
-<% end %>
-
-<div class="foreground_element">
-<h3>Comments</h3>
-<% if current_user %>
-  <%= simple_form_for [@recipe, @comment] do |f| %>
-    <%= f.input :body, as: :text, label: 'Add a comment', input_html: { style: 'height: 150px' } %>
-    <%= f.submit 'Comment', class: 'btn btn-primary' %>
-  <% end %>
-<% else %>
-  <%= link_to 'Sign-in to comment', new_user_session_path %>
-<% end %>
-</div>
-
-<% comments = Comment.where(recipe_id: params[:id]) %>
-<% comments.each do |c| %>
-  <div class="foreground_element">
-    <p class="comment_body">
-      <span class="comment_date"><%= c.created_at.strftime("%Y-%m-%d") %></span>
-      <%= c.body %>
-    </p>
-    <p class="comment_user"><%= link_to c.user.username, profile_path(c.user) %></p>
+    <% if @recipe.user == current_user %>
+      <div class="space_around">
+        <%= link_to 'edit the ingredients', new_recipe_amount_path(@recipe), class: 'edit_button' %>
+        <%= link_to 'edit this recipe', edit_recipe_path(@recipe), class: 'edit_button' %>
+      </div>
+    <% end %>
+    <h1><%= @recipe.name %></h1>
+    <% @categories.each do |cat| %>
+      |<%= cat.name %>|
+    <% end %>
   </div>
-<% end %>
+
+  <% if @recipe[:photo] %>
+    <div class="foreground_element">
+      <div class="recipe_show_photo">
+        <%= cl_image_tag(@recipe.photo, transformation: { dpr: "auto", responsive: true, width: "auto", crop: "scale", angle: 357}) %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="foreground_element">
+    <h3>Ingredients</h3>
+    <ul>
+      <%= render 'shared/amounts' %>
+    </ul>
+  </div>
+
+  <% if @equipments.exists? %>
+    <div class="foreground_element">
+      <p><span class="section_title">Requires:</span>
+        <% @equipments.each do |eq| %>
+          <%= eq.name %>,
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+
+  <div class="foreground_element">
+    <% if @recipe.servings %>
+      <p><span class="section_title">Servings:</span> <%= @recipe.servings %>
+    <% end %>
+    &#160;&#160;&#160;
+    <% if @recipe.cooking_time %>
+      <span class="section_title">Cooking time:</span> <%= @recipe.cooking_time %> mins</p>
+    <% end %>
+  </div>
+
+  <div class="foreground_element">
+    <h3>Method</h3>
+    <p><%= simple_format(@recipe.method) %></p>
+  </div>
+
+  <%= link_to profile_path(@recipe.user.profile) do %>
+    <div class="foreground_element">
+      <p>See all recipes by <%= @recipe.user.username %> </p>
+    </div>
+  <% end %>
+
+  <div class="foreground_element">
+    <h3>Comments</h3>
+    <% if current_user %>
+      <%= simple_form_for [@recipe, @comment] do |f| %>
+        <%= f.input :body, as: :text, label: 'Add a comment', input_html: { style: 'height: 150px' } %>
+        <%= f.submit 'Comment', class: 'btn btn-primary' %>
+      <% end %>
+    <% else %>
+      <%= link_to 'Sign-in to comment', new_user_session_path %>
+    <% end %>
+  </div>
+
+  <% comments = Comment.where(recipe_id: params[:id]) %>
+  <% comments.each do |c| %>
+    <div class="foreground_element">
+      <p class="comment_body">
+        <span class="comment_date"><%= c.created_at.strftime("%Y-%m-%d") %></span>
+        <%= c.body %>
+      </p>
+      <p class="comment_user"><%= link_to c.user.username, profile_path(c.user) %></p>
+    </div>
+  <% end %>
 </div>

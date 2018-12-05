@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_230633) do
+ActiveRecord::Schema.define(version: 2018_12_05_213517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(version: 2018_12_03_230633) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "categories_recipes", id: false, force: :cascade do |t|
+    t.bigint "recipe_id", null: false
+    t.bigint "category_id", null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.string "body"
     t.bigint "user_id"
@@ -50,6 +55,11 @@ ActiveRecord::Schema.define(version: 2018_12_03_230633) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "equipment_recipes", id: false, force: :cascade do |t|
+    t.bigint "recipe_id", null: false
+    t.bigint "equipment_id", null: false
   end
 
   create_table "favourites", force: :cascade do |t|
@@ -85,6 +95,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_230633) do
     t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "status", default: false, null: false
     t.index ["category_id"], name: "index_recipe_categories_on_category_id"
     t.index ["recipe_id"], name: "index_recipe_categories_on_recipe_id"
   end
@@ -94,6 +105,7 @@ ActiveRecord::Schema.define(version: 2018_12_03_230633) do
     t.bigint "equipment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "status", default: false, null: false
     t.index ["equipment_id"], name: "index_recipe_equipments_on_equipment_id"
     t.index ["recipe_id"], name: "index_recipe_equipments_on_recipe_id"
   end

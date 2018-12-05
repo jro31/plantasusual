@@ -10,10 +10,11 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.name = @recipe.name.capitalize
     @recipe.user = current_user
-    if @recipe.valid?
+    if @recipe.valid? == true
       @recipe.save
-      redirect_to new_recipe_recipe_category_path(@recipe)
+      redirect_to edit_recipe_path(@recipe)
     else
+      @recipe.name = nil
       render :new
     end
   end
@@ -30,8 +31,8 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @amounts = Amount.where(recipe_id: params[:id])
-    @categories = RecipeCategory.where(recipe_id: params[:id])
-    @equipments = RecipeEquipment.where(recipe_id: params[:id])
+    @categories = @recipe.categories
+    @equipments = @recipe.equipment
     @comment = Comment.new
   end
 
@@ -49,12 +50,18 @@ class RecipesController < ApplicationController
   def update
     @recipe = Recipe.find(params[:id])
     @recipe.update(recipe_params)
-    redirect_to recipe_path(@recipe)
+    if @recipe.equipment.exists? == false
+      redirect_to edit_recipe_path(@recipe)
+    elsif @recipe.method == nil
+      redirect_to new_recipe_amount_path(@recipe)
+    else
+      redirect_to recipe_path(@recipe)
+    end
   end
 end
 
 private
 
 def recipe_params
-  params.require(:recipe).permit(:photo, :method, :user_id, :name, :servings, :cooking_time)
+  params.require(:recipe).permit(:photo, :method, :user_id, :name, :servings, :cooking_time, category_ids:[], equipment_ids:[])
 end
