@@ -17,8 +17,13 @@
   border: solid 2px gray;
 }
 
+.space_around {
+  display: flex;
+  justify-content: space-around;
+}
+
 .edit_button {
-  float: right;
+  // float: right;
 }
 
 .edit_button:hover {

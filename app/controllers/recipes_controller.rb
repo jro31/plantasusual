@@ -10,14 +10,13 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     @recipe.name = @recipe.name.capitalize
     @recipe.user = current_user
-    @recipe.save
-    redirect_to edit_recipe_path(@recipe)
-    # if @recipe.valid?
-    #   @recipe.save
-    #   redirect_to new_recipe_recipe_category_path(@recipe)
-    # else
-    #   render :new
-    # end
+    if @recipe.valid? == true
+      @recipe.save
+      redirect_to edit_recipe_path(@recipe)
+    else
+      @recipe.name = nil
+      render :new
+    end
   end
 
   def index
