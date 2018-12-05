@@ -3,10 +3,9 @@ class Recipe < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :amounts, dependent: :destroy
   has_many :ingredients, through: :amounts
-  has_many :recipe_equipments, dependent: :destroy
-  has_many :equipment, through: :recipe_equipments
   has_many :favourites, dependent: :destroy
   has_and_belongs_to_many :categories
+  has_and_belongs_to_many :equipment
 
   validates :name, presence: true, length: { minimum: 3 }
 

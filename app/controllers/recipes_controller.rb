@@ -33,7 +33,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @amounts = Amount.where(recipe_id: params[:id])
     @categories = @recipe.categories
-    @equipments = RecipeEquipment.where(recipe_id: params[:id])
+    @equipments = @recipe.equipment
     @comment = Comment.new
   end
 
@@ -58,5 +58,5 @@ end
 private
 
 def recipe_params
-  params.require(:recipe).permit(:photo, :method, :user_id, :name, :servings, :cooking_time, category_ids:[])
+  params.require(:recipe).permit(:photo, :method, :user_id, :name, :servings, :cooking_time, category_ids:[], equipment_ids:[])
 end

@@ -14,7 +14,7 @@
 
 <div class="foreground_element">
 <% if @recipe.method == nil %>
-<%= link_to "I've finished adding ingredients", new_recipe_recipe_equipment_path, class: 'btn btn-warning' %>
+<%= link_to "I've finished adding ingredients", edit_recipe_path(@recipe), class: 'btn btn-warning' %>
 <% else %>
 <%= link_to "Back to the recipe", recipe_path(@recipe), class: 'btn btn-warning' %>
 <% end %>
