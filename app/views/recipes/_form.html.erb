@@ -10,7 +10,7 @@
       <% end %>
     <% end %>
 
-  <% if (@recipe.categories.exists? == false && @recipe.name != nil) || @recipe.method != nil %>
+  <% if @recipe.name != nil || @recipe.method != nil %>
     <div class="foreground_element">
       <%= f.label "What kind of recipe is this? (select all that apply)" %><br />
       <%= f.collection_check_boxes :category_ids, Category.all.order(:name), :id, :name do |b| %>
@@ -28,7 +28,7 @@
     <% end %>
   <% end %>
 
-  <% if (@recipe.equipment.exists? == false && @recipe.categories.exists? == true) || @recipe.method != nil %>
+  <% if @recipe.categories.exists? == true || @recipe.method != nil %>
     <div class="foreground_element">
       <%= f.label "Does this recipe require any of the following equipment?" %><br />
       <%= f.collection_check_boxes :equipment_ids, Equipment.all.order(:name), :id, :name do |b| %>
