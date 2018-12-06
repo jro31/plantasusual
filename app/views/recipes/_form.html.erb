@@ -10,7 +10,7 @@
       <% end %>
     <% end %>
 
-  <% if @recipe.name != nil || @recipe.method != nil %>
+  <% if (@recipe.categories_added == false && @recipe.name != nil) || @recipe.method != nil %>
     <div class="foreground_element">
       <%= f.label "What kind of recipe is this? (select all that apply)" %><br />
       <%= f.collection_check_boxes :category_ids, Category.all.order(:name), :id, :name do |b| %>
@@ -28,7 +28,7 @@
     <% end %>
   <% end %>
 
-  <% if @recipe.categories.exists? == true || @recipe.method != nil %>
+  <% if (@recipe.categories_added == true && @recipe.equipment_added == false) || @recipe.method != nil %>
     <div class="foreground_element">
       <%= f.label "Does this recipe require any of the following equipment?" %><br />
       <%= f.collection_check_boxes :equipment_ids, Equipment.all.order(:name), :id, :name do |b| %>
@@ -46,7 +46,7 @@
     <% end %>
   <% end %>
 
-  <% if @recipe.equipment.exists? == true || @recipe.method != nil %>
+  <% if (@recipe.categories_added == true && @recipe.equipment_added == true) || @recipe.method != nil %>
     <div class="foreground_element">
       <div class="form-inline form_row">
         <%= f.input :servings, collection: 1..20, required: true, label: false, prompt: "Number of servings", input_html: { style: 'width: 250px' } %>
