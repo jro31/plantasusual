@@ -1,0 +1,5 @@
+meta_product_name: "Plant as Usual"
+meta_title: "Plant as Usual - Plant-based recipes"
+meta_description: "A community for sharing vegan recipes"
+meta_image: "salad.jpg"                       # should exist in `app/assets/images/`
+twitter_account: "@plantasusual"
