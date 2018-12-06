@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_05_213517) do
+ActiveRecord::Schema.define(version: 2018_12_06_135710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,8 @@ ActiveRecord::Schema.define(version: 2018_12_05_213517) do
     t.integer "servings"
     t.integer "cooking_time"
     t.string "method"
+    t.boolean "categories_added", default: false
+    t.boolean "equipment_added", default: false
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 

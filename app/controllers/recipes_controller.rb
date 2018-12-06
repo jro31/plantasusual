@@ -49,8 +49,14 @@ class RecipesController < ApplicationController
 
   def update
     @recipe = Recipe.find(params[:id])
+    if params[:commit] == "Add categories"
+      @recipe.categories_added = true
+    end
+    if params[:commit] == "Add equipment"
+      @recipe.equipment_added = true
+    end
     @recipe.update(recipe_params)
-    if @recipe.equipment.exists? == false
+    if @recipe.equipment_added == false
       redirect_to edit_recipe_path(@recipe)
     elsif @recipe.method == nil
       redirect_to new_recipe_amount_path(@recipe)
