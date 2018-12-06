@@ -19,8 +19,8 @@
   <div class="foreground_element">
     <% if @recipe.user == current_user %>
       <div class="space_around">
-        <%= link_to 'edit the ingredients', new_recipe_amount_path(@recipe), class: 'edit_button' %>
-        <%= link_to 'edit this recipe', edit_recipe_path(@recipe), class: 'edit_button' %>
+        <%= link_to '|edit the ingredients|', new_recipe_amount_path(@recipe), class: 'edit_button' %>
+        <%= link_to '|edit this recipe|', edit_recipe_path(@recipe), class: 'edit_button' %>
       </div>
     <% end %>
     <h1><%= @recipe.name %></h1>

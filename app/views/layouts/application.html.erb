@@ -11,8 +11,9 @@
   </head>
 
   <% landscape_images = ['fruit.jpg', 'chop.jpg', 'fruity.jpg', 'decorative.jpg'] %>
+  <% seemless_images = ['avocado.jpg', 'lime.jpg', 'corn.jpg', 'shallots.jpg', 'tomato.jpg', 'peppers.jpg'] %>
 
-  <body class="background" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path landscape_images.sample %>');">
+  <body class="background" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= image_path seemless_images.sample %>');">
     <%= render 'shared/flashes' %>
     <%= render 'shared/logo' unless defined? @logo_hide %>
     <%= render 'shared/search' unless defined? @search_bar_hide %>

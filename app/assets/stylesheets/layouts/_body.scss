@@ -4,6 +4,9 @@
   background-attachment: fixed;
 }
 
-@media (max-width: 800px) {
-  background-attachment: initial;
+@media(max-aspect-ratio: 1/1) {
+  .background {
+    background-size: 100vw 50vh;
+    background-repeat: repeat;
+  }
 }
