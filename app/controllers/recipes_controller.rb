@@ -1,9 +1,11 @@
 class RecipesController < ApplicationController
+
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def new
     @search_bar_hide = true
     @recipe = Recipe.new
+    authorize @recipe
   end
 
   def create
@@ -11,6 +13,7 @@ class RecipesController < ApplicationController
     @recipe.name = @recipe.name.capitalize
     @recipe.user = current_user
     if @recipe.valid? == true
+    authorize @recipe
       @recipe.save
       redirect_to edit_recipe_path(@recipe)
     else
@@ -22,14 +25,16 @@ class RecipesController < ApplicationController
   def index
     if params[:query].present?
       sql_query = "name ILIKE :query OR method ILIKE :query"
-      @recipes = Recipe.where(sql_query, query: "%#{params[:query]}%")
+      @recipes = policy_scope(Recipe).where(sql_query, query: "%#{params[:query]}%")
     else
-      @recipes = Recipe.all.order(:name)
+      @recipes = policy_scope(Recipe).order(created_at: :desc)
+      # WHEN YOU USE THE policy_scope METHOD, PUNDIT WILL CALL YOUR RESOLVE METHOD
     end
   end
 
   def show
     @recipe = Recipe.find(params[:id])
+    raise
     @amounts = Amount.where(recipe_id: params[:id])
     @categories = @recipe.categories
     @equipments = @recipe.equipment
@@ -39,6 +44,7 @@ class RecipesController < ApplicationController
   def edit
     @search_bar_hide = true
     @recipe = Recipe.find(params[:id])
+    authorize @recipe
     @times = []
     180.times do |n|
       if n % 5 == 0
@@ -55,6 +61,7 @@ class RecipesController < ApplicationController
     if params[:commit] == "Add equipment"
       @recipe.equipment_added = true
     end
+    authorize @recipe
     @recipe.update(recipe_params)
     if @recipe.equipment_added == false
       redirect_to edit_recipe_path(@recipe)

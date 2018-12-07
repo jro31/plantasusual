@@ -1,5 +1,7 @@
 class ApplicationPolicy
   attr_reader :user, :record
+  # user == THE CURRENT USER (from Devise)
+  # record == THE ITEM YOU'RE AUTHORIZING WITHIN THAT CONTROLLER (for example in the recipe controller, :record == @recipe)
 
   def initialize(user, record)
     @user = user
