@@ -1,32 +1,32 @@
 <div class="global_wrapper">
   <% if current_user == @recipe.user %>
-  <div class="foreground_element">
-<h1><%= @recipe.name %></h1>
-  </div>
+    <div class="foreground_element">
+      <h1><%= @recipe.name %></h1>
+    </div>
 
-<div class="foreground_element">
-  <h2>Add ingredients</h2>
-<ul>
-  <%= render 'shared/amounts' %>
-</ul>
-</div>
+    <div class="foreground_element">
+      <h2>Add ingredients</h2>
+      <ul>
+        <%= render 'shared/amounts' %>
+      </ul>
+    </div>
 
-<%= render 'form', recipe: @recipe, amount: @amount %>
+    <%= render 'form', recipe: @recipe, amount: @amount %>
 
-<div class="foreground_element">
-<% if @recipe.method == nil %>
-<%= link_to "I've finished adding ingredients", edit_recipe_path(@recipe), class: 'btn btn-warning' %>
-<% else %>
-<%= link_to "Back to the recipe", recipe_path(@recipe), class: 'btn btn-warning' %>
-<% end %>
-</div>
+    <div class="foreground_element">
+      <% if @recipe.method == nil %>
+        <%= link_to "I've finished adding ingredients", edit_recipe_path(@recipe), class: 'btn btn-warning' %>
+      <% else %>
+        <%= link_to "Back to the recipe", recipe_path(@recipe), class: 'btn btn-warning' %>
+      <% end %>
+    </div>
   <% else %>
     <div class="foreground_element">
-<h1>You don't belong here</h1>
-  </div>
+      <h1>You don't belong here</h1>
+    </div>
 
-  <div class="foreground_element">
-    <%= link_to "I will leave now", root_path, class: 'btn btn-danger' %>
+    <div class="foreground_element">
+      <%= link_to "I will leave now", root_path, class: 'btn btn-danger' %>
     </div>
   <% end %>
 </div>
