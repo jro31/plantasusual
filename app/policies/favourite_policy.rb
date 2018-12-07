@@ -1,4 +1,4 @@
-class AmountPolicy < ApplicationPolicy
+class FavouritePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -10,12 +10,12 @@ class AmountPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user_is_owner_or_admin?
+    user_is_owner?
   end
 
   private
 
-  def user_is_owner_or_admin?
-    record.recipe.user == user || user.admin
+  def user_is_owner?
+    record.user == user
   end
 end
