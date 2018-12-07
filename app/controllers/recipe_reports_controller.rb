@@ -25,5 +25,5 @@ end
 private
 
 def recipe_report_params
-  params.require(:recipe_report).permit(:report, :user_id, :recipe_id)
+  params.require(:recipe_report).permit(:report, :user_id, :recipe_id, :resolved)
 end

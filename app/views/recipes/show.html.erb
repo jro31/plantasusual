@@ -100,7 +100,10 @@
         <span class="comment_date"><%= c.created_at.strftime("%Y-%m-%d") %></span>
         <%= c.body %>
       </p>
-      <p class="comment_user"><%= link_to c.user.username, profile_path(c.user) %></p>
+      <div class="space_between">
+      <div><%= link_to 'Report this comment', new_recipe_comment_comment_report_path(@recipe, c) %></div>
+      <div class="comment_user"><%= link_to c.user.username, profile_path(c.user) %></div>
+      </div>
     </div>
   <% end %>
 

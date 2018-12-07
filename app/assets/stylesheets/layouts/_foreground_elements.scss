@@ -22,6 +22,11 @@
   justify-content: space-around;
 }
 
+.space_between {
+  display: flex;
+  justify-content: space-between;
+}
+
 .edit_button {
   // float: right;
 }

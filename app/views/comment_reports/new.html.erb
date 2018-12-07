@@ -1,0 +1,14 @@
+<div class="global_wrapper">
+
+  <div class="foreground_element">
+<h1>Report this comment</h1>
+  </div>
+
+  <div class="foreground_element">
+  <%= simple_form_for [@recipe, @comment, @comment_report] do |f| %>
+  <%= f.input :report, as: :text, required: true, label: "Why are you reporting this comment?" %>
+  <%= f.submit 'Report', class: 'btn btn-primary' %>
+  <% end %>
+  </div>
+
+</div>
