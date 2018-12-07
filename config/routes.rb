@@ -17,4 +17,7 @@ Rails.application.routes.draw do
     end
     resources :recipe_reports, only: [:new, :create]
   end
+
+  resources :comment_reports, only: [:index]
+  resources :recipe_reports, only: [:index]
 end

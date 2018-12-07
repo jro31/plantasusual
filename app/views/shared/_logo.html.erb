@@ -24,6 +24,18 @@
             <i class="fas fa-smile-wink"></i>  <%= t(".add_recipe", default: "Add a recipe") %>
           <% end %>
         </li>
+        <% if current_user.admin %>
+          <li>
+            <%= link_to recipe_reports_path do %>
+              <i class="fas fa-exclamation-triangle"></i>  <%= t(".recipe_reports", default: "Recipe reports") %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to comment_reports_path do %>
+              <i class="fas fa-exclamation-circle"></i>  <%= t(".comment_reports", default: "Comment reports") %>
+            <% end %>
+          </li>
+        <% end %>
         <li>
           <%= link_to destroy_user_session_path, method: :delete do %>
             <i class="fas fa-poop"></i>  <%= t(".log_out", default: "Log out") %>

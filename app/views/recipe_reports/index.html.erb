@@ -1,0 +1,14 @@
+<div class="global_wrapper">
+  <% if current_user.admin %>
+  <% @reports.each do |r| %>
+    <p><%= r %></p>
+  <% end %>
+  <% else %>
+  <div class="foreground_element">
+    <h1>You are not welcome here</h1>
+  </div>
+  <div class="foreground_element">
+    <%= link_to 'I will leave this place', root_path, class: 'btn btn-danger' %>
+  </div>
+  <% end %>
+</div>

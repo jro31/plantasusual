@@ -22,6 +22,11 @@ class CommentReportsController < ApplicationController
       render :new
     end
   end
+
+  def index
+    @search_bar_hide = true
+    @reports = policy_scope(CommentReport).order(created_at: :desc)
+  end
 end
 
 private
