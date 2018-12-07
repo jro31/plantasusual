@@ -77,7 +77,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="353" y="425" name="users">
+<table x="337" y="317" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -174,7 +174,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="538" y="586" name="comments">
+<table x="481" y="562" name="comments">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -265,7 +265,7 @@
 <key type="PRIMARY" name="">
 </key>
 </table>
-<table x="731" y="694" name="comment_reports">
+<table x="135" y="610" name="comment_reports">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -276,11 +276,15 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="comments" row="id" />
 </row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="394" y="109" name="recipe_reports">
+<table x="382" y="77" name="recipe_reports">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -290,6 +294,10 @@
 <row name="recipe_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="recipes" row="id" />
+</row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_07_185048) do
+ActiveRecord::Schema.define(version: 2018_12_07_191335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,9 @@ ActiveRecord::Schema.define(version: 2018_12_07_185048) do
     t.bigint "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["comment_id"], name: "index_comment_reports_on_comment_id"
+    t.index ["user_id"], name: "index_comment_reports_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -124,7 +126,9 @@ ActiveRecord::Schema.define(version: 2018_12_07_185048) do
     t.bigint "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["recipe_id"], name: "index_recipe_reports_on_recipe_id"
+    t.index ["user_id"], name: "index_recipe_reports_on_user_id"
   end
 
   create_table "recipes", force: :cascade do |t|
@@ -170,6 +174,7 @@ ActiveRecord::Schema.define(version: 2018_12_07_185048) do
   add_foreign_key "amounts", "recipes"
   add_foreign_key "amounts", "units"
   add_foreign_key "comment_reports", "comments"
+  add_foreign_key "comment_reports", "users"
   add_foreign_key "comments", "recipes"
   add_foreign_key "comments", "users"
   add_foreign_key "favourites", "recipes"
@@ -180,5 +185,6 @@ ActiveRecord::Schema.define(version: 2018_12_07_185048) do
   add_foreign_key "recipe_equipments", "equipment"
   add_foreign_key "recipe_equipments", "recipes"
   add_foreign_key "recipe_reports", "recipes"
+  add_foreign_key "recipe_reports", "users"
   add_foreign_key "recipes", "users"
 end

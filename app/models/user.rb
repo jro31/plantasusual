@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :recipes
   has_many :comments
   has_many :favourites
+  has_many :recipe_reports
+  has_many :comment_reports
   has_one :profile
 
   validates :username, presence: true, uniqueness: true, length: { minimum: 3 }

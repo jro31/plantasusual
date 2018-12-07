@@ -103,4 +103,8 @@
       <p class="comment_user"><%= link_to c.user.username, profile_path(c.user) %></p>
     </div>
   <% end %>
+
+  <div class="foreground_element">
+    <%= link_to 'Report this recipe', new_recipe_recipe_report_path(@recipe) %>
+  </div>
 </div>
