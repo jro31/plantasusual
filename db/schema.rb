@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_135710) do
+ActiveRecord::Schema.define(version: 2018_12_07_185048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,12 +41,21 @@ ActiveRecord::Schema.define(version: 2018_12_06_135710) do
     t.bigint "category_id", null: false
   end
 
+  create_table "comment_reports", force: :cascade do |t|
+    t.string "report"
+    t.bigint "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_comment_reports_on_comment_id"
+  end
+
   create_table "comments", force: :cascade do |t|
     t.string "body"
     t.bigint "user_id"
     t.bigint "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "flagged", default: false
     t.index ["recipe_id"], name: "index_comments_on_recipe_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -110,6 +119,14 @@ ActiveRecord::Schema.define(version: 2018_12_06_135710) do
     t.index ["recipe_id"], name: "index_recipe_equipments_on_recipe_id"
   end
 
+  create_table "recipe_reports", force: :cascade do |t|
+    t.string "report"
+    t.bigint "recipe_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recipe_id"], name: "index_recipe_reports_on_recipe_id"
+  end
+
   create_table "recipes", force: :cascade do |t|
     t.string "photo"
     t.bigint "user_id"
@@ -121,6 +138,7 @@ ActiveRecord::Schema.define(version: 2018_12_06_135710) do
     t.string "method"
     t.boolean "categories_added", default: false
     t.boolean "equipment_added", default: false
+    t.boolean "flagged", default: false
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
@@ -151,6 +169,7 @@ ActiveRecord::Schema.define(version: 2018_12_06_135710) do
   add_foreign_key "amounts", "preparation_methods"
   add_foreign_key "amounts", "recipes"
   add_foreign_key "amounts", "units"
+  add_foreign_key "comment_reports", "comments"
   add_foreign_key "comments", "recipes"
   add_foreign_key "comments", "users"
   add_foreign_key "favourites", "recipes"
@@ -160,5 +179,6 @@ ActiveRecord::Schema.define(version: 2018_12_06_135710) do
   add_foreign_key "recipe_categories", "recipes"
   add_foreign_key "recipe_equipments", "equipment"
   add_foreign_key "recipe_equipments", "recipes"
+  add_foreign_key "recipe_reports", "recipes"
   add_foreign_key "recipes", "users"
 end

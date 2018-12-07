@@ -4,6 +4,7 @@ class Recipe < ApplicationRecord
   has_many :amounts, dependent: :destroy
   has_many :ingredients, through: :amounts
   has_many :favourites, dependent: :destroy
+  has_many :recipe_reports
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :equipment
 
