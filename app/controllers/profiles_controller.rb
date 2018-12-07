@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = Profile.find(params[:id])
+    authorize @profile
     @user = @profile.user
     @recipes = Recipe.where(user: params[:id]).order(:name)
     @favourites = Favourite.where(user: params[:id])

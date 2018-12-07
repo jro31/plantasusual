@@ -4,34 +4,30 @@ class AmountsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     @amounts = Amount.where(recipe_id: params[:recipe_id])
     @amount = Amount.new
+    authorize @amount
   end
 
   def create
-    if Ingredient.exists?(name: params[:amount][:ingredient].downcase)
-      @amount = Amount.new(amount_params)
-      recipe = Recipe.find(params[:recipe_id])
-      @amount.recipe = recipe
-      ingredient = Ingredient.find_by name: params[:amount][:ingredient].downcase
-      @amount.ingredient = ingredient
-      @amount.save
-      redirect_to new_recipe_amount_path
-    else
+    if Ingredient.exists?(name: params[:amount][:ingredient].downcase) == false
       new_ingredient = Ingredient.new(ingredient_params)
       new_ingredient.name = params[:amount][:ingredient].downcase
       new_ingredient.save
-
-      @amount = Amount.new(amount_params)
-      recipe = Recipe.find(params[:recipe_id])
-      @amount.recipe = recipe
-      ingredient = Ingredient.find_by name: params[:amount][:ingredient].downcase
-      @amount.ingredient = ingredient
-      @amount.save
-      redirect_to new_recipe_amount_path
     end
+    @amount = Amount.new(amount_params)
+    recipe = Recipe.find(params[:recipe_id])
+    @amount.recipe = recipe
+    ingredient = Ingredient.find_by name: params[:amount][:ingredient].downcase
+    @amount.ingredient = ingredient
+    if current_user == recipe.user
+      authorize @amount
+    end
+    @amount.save
+    redirect_to new_recipe_amount_path
   end
 
   def destroy
     @amount = Amount.find(params[:id])
+    authorize @amount
     @amount.destroy
     redirect_to new_recipe_amount_path(params[:recipe_id])
   end

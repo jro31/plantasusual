@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user = current_user
     @comment.recipe = Recipe.find(params[:recipe_id])
+    authorize @comment
     @comment.save
     redirect_to recipe_path(@comment.recipe)
   end
