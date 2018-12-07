@@ -13,7 +13,7 @@ class RecipesController < ApplicationController
     @recipe.name = @recipe.name.capitalize
     @recipe.user = current_user
     if @recipe.valid? == true
-    authorize @recipe
+      authorize @recipe
       @recipe.save
       redirect_to edit_recipe_path(@recipe)
     else

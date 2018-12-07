@@ -1,1 +1,13 @@
-<h1>Surprise dude</h1>
+<div class="global_wrapper">
+  <div class="foreground_element">
+<h1>Report the '<%= @recipe.name %>' recipe</h1>
+  </div>
+
+  <div class="foreground_element">
+  <%= simple_form_for [@recipe, @recipe_report] do |f| %>
+  <%= f.input :report, as: :text, required: true, label: "Why are you reporting this recipe?" %>
+  <%= f.submit 'Report', class: 'btn btn-primary' %>
+  <% end %>
+  </div>
+
+</div>
