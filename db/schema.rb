@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_07_191335) do
+ActiveRecord::Schema.define(version: 2018_12_07_204801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2018_12_07_191335) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.boolean "resolved", default: false
     t.index ["comment_id"], name: "index_comment_reports_on_comment_id"
     t.index ["user_id"], name: "index_comment_reports_on_user_id"
   end
@@ -57,7 +58,6 @@ ActiveRecord::Schema.define(version: 2018_12_07_191335) do
     t.bigint "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "flagged", default: false
     t.index ["recipe_id"], name: "index_comments_on_recipe_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -101,32 +101,13 @@ ActiveRecord::Schema.define(version: 2018_12_07_191335) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
-  create_table "recipe_categories", force: :cascade do |t|
-    t.bigint "recipe_id"
-    t.bigint "category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "status", default: false, null: false
-    t.index ["category_id"], name: "index_recipe_categories_on_category_id"
-    t.index ["recipe_id"], name: "index_recipe_categories_on_recipe_id"
-  end
-
-  create_table "recipe_equipments", force: :cascade do |t|
-    t.bigint "recipe_id"
-    t.bigint "equipment_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "status", default: false, null: false
-    t.index ["equipment_id"], name: "index_recipe_equipments_on_equipment_id"
-    t.index ["recipe_id"], name: "index_recipe_equipments_on_recipe_id"
-  end
-
   create_table "recipe_reports", force: :cascade do |t|
     t.string "report"
     t.bigint "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.boolean "resolved", default: false
     t.index ["recipe_id"], name: "index_recipe_reports_on_recipe_id"
     t.index ["user_id"], name: "index_recipe_reports_on_user_id"
   end
@@ -142,7 +123,6 @@ ActiveRecord::Schema.define(version: 2018_12_07_191335) do
     t.string "method"
     t.boolean "categories_added", default: false
     t.boolean "equipment_added", default: false
-    t.boolean "flagged", default: false
     t.index ["user_id"], name: "index_recipes_on_user_id"
   end
 
@@ -180,10 +160,6 @@ ActiveRecord::Schema.define(version: 2018_12_07_191335) do
   add_foreign_key "favourites", "recipes"
   add_foreign_key "favourites", "users"
   add_foreign_key "profiles", "users"
-  add_foreign_key "recipe_categories", "categories"
-  add_foreign_key "recipe_categories", "recipes"
-  add_foreign_key "recipe_equipments", "equipment"
-  add_foreign_key "recipe_equipments", "recipes"
   add_foreign_key "recipe_reports", "recipes"
   add_foreign_key "recipe_reports", "users"
   add_foreign_key "recipes", "users"
