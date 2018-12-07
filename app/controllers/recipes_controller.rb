@@ -34,7 +34,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    raise
+    authorize @recipe
     @amounts = Amount.where(recipe_id: params[:id])
     @categories = @recipe.categories
     @equipments = @recipe.equipment

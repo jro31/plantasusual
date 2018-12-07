@@ -34,7 +34,8 @@ class RecipePolicy < ApplicationPolicy
   private
 
   def user_is_owner_or_admin?
-    record.user == user || user.admin
+    # record.user == user || user.admin
+    record&.user == user || user&.admin  # CHANGED TO THIS THANKS TO STACK OVERFLOW - I DON'T REALLY UNDERSTAND WHY, BUT IT WORKS
 
     # record.user == user IS EQUIVALENT TO:
     # if record.user == user
