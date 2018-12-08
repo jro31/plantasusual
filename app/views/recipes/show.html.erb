@@ -107,18 +107,28 @@
   <div class="foreground_element">
     <h3>Comments</h3>
     <% if current_user %>
-      <%= simple_form_for [@recipe, @comment] do |f| %>
-        <%= f.input :body, as: :text, label: 'Add a comment', input_html: { style: 'height: 150px' } %>
-        <%= f.submit 'Comment', class: 'btn btn-primary' %>
-      <% end %>
+      <%= render 'comments/form' %>
     <% else %>
       <%= link_to 'Sign-in to comment', new_user_session_path %>
     <% end %>
   </div>
 
-  <% comments = Comment.where(recipe_id: params[:id]) %>
+  <% comments = Comment.where(recipe_id: params[:id]).order(created_at: :asc) %>
   <% comments.each do |c| %>
+  <% if c.deleted == false %>
     <div class="foreground_element">
+      <% if current_user %>
+        <% if policy(c).edit? %>
+        <div class="space_between">
+          <div>
+          <%= link_to 'Edit this comment', edit_recipe_comment_path(@recipe, c) %>
+          </div>
+          <div>
+          <p>Delete this comment</p>
+        </div>
+        </div>
+        <% end %>
+      <% end %>
       <p class="comment_body">
         <span class="comment_date"><%= c.created_at.strftime("%Y-%m-%d") %></span>
         <%= c.body %>
@@ -128,6 +138,7 @@
       <div class="comment_user"><%= link_to c.user.username, profile_path(c.user) %></div>
       </div>
     </div>
+    <% end %>
   <% end %>
 
     <%= link_to new_recipe_recipe_report_path(@recipe) do %>

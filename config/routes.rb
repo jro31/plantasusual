@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :amounts, only: [:new, :create, :destroy]
     resources :favourites, only: [:create, :destroy]
-    resources :comments, only: [:create] do
+    resources :comments, only: [:create, :edit, :update] do
       resources :comment_reports, only: [:new, :create]
     end
     resources :recipe_reports, only: [:new, :create]

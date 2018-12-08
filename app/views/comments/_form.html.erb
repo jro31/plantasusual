@@ -1,0 +1,4 @@
+<%= simple_form_for [@recipe, @comment] do |f| %>
+  <%= f.input :body, as: :text, label: 'Add a comment', input_html: { style: 'height: 150px' } %>
+  <%= f.submit 'Comment', class: 'btn btn-primary' %>
+<% end %>
