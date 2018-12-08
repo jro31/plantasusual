@@ -83,6 +83,7 @@
     </div>
   <% end %>
 
+  <% if @recipe.servings || @recipe.cooking_time %>
   <div class="foreground_element">
     <% if @recipe.servings %>
       <p><span class="section_title">Servings:</span> <%= @recipe.servings %>
@@ -92,6 +93,7 @@
       <span class="section_title">Cooking time:</span> <%= @recipe.cooking_time %> mins</p>
     <% end %>
   </div>
+  <% end %>
 
   <div class="foreground_element">
     <h3>Method</h3>
