@@ -53,13 +53,9 @@
       </div>
     <% end %>
     <h1><%= @recipe.name %></h1>
-    <div class="space_around">
     <% @categories.each do |cat| %>
-      <div>
-      |<%= cat.name %>|
-    </div>
+      &#160;|<%= cat.name %>|&#160;
     <% end %>
-    </div>
   </div>
 
   <% if @recipe[:photo] %>

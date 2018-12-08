@@ -1,3 +1,4 @@
 import "bootstrap";
-import { loadDynamicBannerText } from '../components/banner';
+import { loadDynamicBannerText, bindSweetAlertButtonDemo } from '../components/banner';
 loadDynamicBannerText();
+bindSweetAlertButtonDemo();

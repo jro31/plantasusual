@@ -24,8 +24,17 @@ class RecipesController < ApplicationController
 
   def index
     if params[:query].present?
-      sql_query = "name ILIKE :query OR method ILIKE :query"
-      @recipes = policy_scope(Recipe).where(sql_query, query: "%#{params[:query]}%")
+      # IF THE SEARCH BAR ISN'T WORKING AS YOU EXPECT IT TO, UNCOMMENT THESE TWO LINES AND DELETE THE REST OF IT
+      # sql_query = "name ILIKE :query OR method ILIKE :query"
+      # @recipes = policy_scope(Recipe).where(sql_query, query: "%#{params[:query]}%")
+
+      sql_query = " \
+        recipes.name ILIKE :query \
+        OR recipes.method ILIKE :query \
+        OR categories.name ILIKE :query \
+        OR equipment.name ILIKE :query \
+      "
+      @recipes = policy_scope(Recipe).joins(:categories, :equipment).where(sql_query, query: "%#{params[:query]}%")
     else
       @recipes = policy_scope(Recipe).order(created_at: :desc)
       # WHEN YOU USE THE policy_scope METHOD, PUNDIT WILL CALL YOUR RESOLVE METHOD
