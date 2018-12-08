@@ -53,9 +53,13 @@
       </div>
     <% end %>
     <h1><%= @recipe.name %></h1>
+    <div class="space_around">
     <% @categories.each do |cat| %>
+      <div>
       |<%= cat.name %>|
+    </div>
     <% end %>
+    </div>
   </div>
 
   <% if @recipe[:photo] %>
@@ -130,7 +134,9 @@
     </div>
   <% end %>
 
+    <%= link_to new_recipe_recipe_report_path(@recipe) do %>
   <div class="foreground_element">
-    <%= link_to 'Report this recipe', new_recipe_recipe_report_path(@recipe) %>
+    Report this recipe
   </div>
+  <% end %>
 </div>
