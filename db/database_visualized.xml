@@ -70,6 +70,9 @@
 <row name="equipment_added" null="0" autoincrement="0">
 <datatype>BOOLEAN</datatype>
 <default>'false'</default></row>
+<row name="deleted" null="1" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'false'</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
@@ -186,6 +189,9 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="recipes" row="id" />
 </row>
+<row name="deleted" null="1" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'false'</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
