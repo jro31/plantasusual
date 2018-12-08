@@ -19,13 +19,13 @@
   <% if current_user && @recipe.user != current_user %>
     <% favs = Favourite.where(user: current_user, recipe: @recipe).take %>
     <% if favs %>
-      <div class="star full_star">
+      <div class="star star_show full_star">
         <%= link_to recipe_favourite_path(@recipe, favs.id), method: :delete do %>
           <i class="fas fa-star"></i>
         <% end %>
       </div>
     <% else %>
-      <div class="star empty_star">
+      <div class="star star_show empty_star">
         <%= link_to recipe_favourites_path(@recipe), method: :post do %>
           <i class="far fa-star"></i>
         <% end %>
@@ -36,11 +36,11 @@
   <div class="social_media_buttons">
 
     <!-- Twitter tweet button start -->
-    <a href="https://twitter.com/intent/tweet?text=<%= @recipe.name %> on Plant as Usual&url=https%3A%2F%2Fwww.plantasusual.com%2Frecipes%2F<%= @recipe.id %>&via=plantasusual&hashtags=vegan,plantbased" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <a href="https://twitter.com/intent/tweet?text=<%= @recipe.name %> on Plant as Usual&url=https%3A%2F%2Fwww.plantasusual.com%2Frecipes%2F<%= @recipe.id %>&via=plantasusual&hashtags=vegan,plantbased" class="twitter-share-button" data-show-count="false"></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <!-- Twitter tweet button end -->
 
     <!-- Facebook share button start -->
-    <div class="fb-share-button" data-href="https://www.plantasusual.com/recipes/<%= @recipe.id %>" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.plantasusual.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+    <div class="fb-share-button" data-href="https://www.plantasusual.com/recipes/<%= @recipe.id %>" data-layout="button" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.plantasusual.com%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"></a></div>
     <!-- Facebook share button end -->
 
   </div>
