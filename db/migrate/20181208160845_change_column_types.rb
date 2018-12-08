@@ -1,0 +1,6 @@
+class ChangeColumnTypes < ActiveRecord::Migration[5.2]
+  def change
+    change_column :recipes, :method, :text
+    change_column :comments, :body, :text
+  end
+end
