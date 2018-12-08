@@ -4,8 +4,11 @@
       <%= a.size %>
       x
       <% end %>
-      <% if a.unit %><%= a.unit.measurement %>
-      <% if a.unit.measurement != "whole" && a.unit.measurement != "large" && a.unit.measurement != "medium" && a.unit.measurement != "small" %>of<% end %><% end %>
+      <% if a.unit %>
+      <% m = a.unit.measurement %>
+      <% s = a.size %>
+      <%= m %><% if s != "1" && s.downcase != "one" && s.downcase != "half" && s.downcase != "quarter" %><% if m == "gram" || m == "millilitre" || m == "teaspoon" || m == "tablespoon" || m == "cup" || m == "litre" || m == "kilogram" || m == "piece" || m == "centimetre" || m == "can" || m == "can" || m == "pack" || m == "clove" %>s<% elsif m == "pinch" || m == "splash" || m == "dash" || m == "inch" %>es<% end %><% end %>
+      <% if m != "whole" && m != "large" && m != "medium" && m != "small" %>of<% end %><% end %>
       <%= a.ingredient.name.downcase %><% if a.preparation_method %>,
         <%= a.preparation_method.name %>
       <% end %>

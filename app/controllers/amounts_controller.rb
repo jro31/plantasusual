@@ -8,6 +8,7 @@ class AmountsController < ApplicationController
   end
 
   def create
+
     if Ingredient.exists?(name: params[:amount][:ingredient].downcase) == false
       new_ingredient = Ingredient.new(ingredient_params)
       new_ingredient.name = params[:amount][:ingredient].downcase
@@ -21,7 +22,11 @@ class AmountsController < ApplicationController
     if current_user == recipe.user
       authorize @amount
     end
-    @amount.save
+    if @amount.ingredient.name != ""
+      @amount.save
+    else
+      flash[:alert] = "Please include an ingredient"
+    end
     redirect_to new_recipe_amount_path
   end
 
