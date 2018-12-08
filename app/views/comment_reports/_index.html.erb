@@ -1,0 +1,5 @@
+  <% if current_user.admin %>
+    <% @comment_reports.each do |r| %>
+      <p><%= r %></p>
+    <% end %>
+  <% end %>

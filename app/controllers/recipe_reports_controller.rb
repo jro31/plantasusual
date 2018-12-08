@@ -25,6 +25,18 @@ class RecipeReportsController < ApplicationController
     @search_bar_hide = true
     @reports = policy_scope(RecipeReport).order(created_at: :desc)
   end
+
+  def update
+    @recipe_report = RecipeReport.find(params[:id])
+    if @recipe_report.resolved == false
+      @recipe_report.resolved = true
+    else
+      @recipe_report.resolved = false
+    end
+    authorize @recipe_report
+    @recipe_report.save
+    redirect_to pages_admin_panel_path
+  end
 end
 
 private

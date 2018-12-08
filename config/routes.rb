@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
+  get 'pages/admin_panel', to: 'pages#admin_panel'
+
   resources :profiles, only: [:show]
   resources :recipes do
     resources :amounts, only: [:new, :create, :destroy]
@@ -19,5 +21,5 @@ Rails.application.routes.draw do
   end
 
   resources :comment_reports, only: [:index]
-  resources :recipe_reports, only: [:index]
+  resources :recipe_reports, only: [:index, :update]
 end
