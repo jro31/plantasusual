@@ -27,6 +27,18 @@ class CommentReportsController < ApplicationController
     @search_bar_hide = true
     @reports = policy_scope(CommentReport).order(created_at: :desc)
   end
+
+  def update
+    @comment_report = CommentReport.find(params[:id])
+    if @comment_report.resolved == false
+      @comment_report.resolved = true
+    else
+      @comment_report.resolved = false
+    end
+    authorize @comment_report
+    @comment_report.save
+    redirect_to pages_admin_panel_path
+  end
 end
 
 private

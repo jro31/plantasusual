@@ -1,5 +1,47 @@
-  <% if current_user.admin %>
-    <% @comment_reports.each do |r| %>
-      <p><%= r %></p>
+<% if current_user.admin %>
+  <div class="foreground_element">
+    <h2>Comment reports</h2>
+  </div>
+  <% @comment_reports.each do |c| %>
+    <% if c.resolved == false %>
+      <div class="foreground_element">
+        <div class="space_around">
+          <div>
+        <p>
+          <span class="section_title">Recipe owner:</span>
+          <%= c.comment.recipe.user.username %>
+        </p>
+        <p>
+          <span class="section_title">Recipe:</span>
+          <%= c.comment.recipe.name %>
+        </p>
+        </div>
+        <div>
+        <p>
+          <span class="section_title">Commenter:</span>
+          <%= c.comment.user.username %>
+        </p>
+        <p>
+          <span class="section_title">Comment:</span>
+          <%= c.comment.body %>
+        </p>
+        </div>
+        <div>
+        <p>
+          <span class="section_title">Reporter:</span>
+          <%= c.user.username %>
+        </p>
+        <p>
+          <span class="section_title">Report:</span>
+          <%= c.report %>
+        </p>
+        </div>
+        </div>
+        <div class="space_around">
+          <%= link_to 'View this recipe', recipe_path(c.comment.recipe) %>
+          <%= link_to 'Mark this issue as resolved', comment_report_path(c), method: :patch %>
+        </div>
+      </div>
     <% end %>
   <% end %>
+<% end %>

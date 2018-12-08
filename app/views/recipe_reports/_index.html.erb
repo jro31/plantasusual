@@ -1,21 +1,34 @@
 <% if current_user.admin %>
   <div class="foreground_element">
-    <h1>Recipe reports</h1>
+    <h2>Recipe reports</h2>
   </div>
   <% @recipe_reports.each do |r| %>
     <% if r.resolved == false %>
       <div class="foreground_element">
-        <p>
-          <span class="section_title">Recipe name:</span>
-          <%= r.recipe.name %>
-        </p>
-        <p>
-          <span class="section_title">Report:</span>
-          <%= r.report %>
-        </p>
+        <div class="space_around">
+          <div>
+            <p>
+              <span class="section_title">Recipe owner:</span>
+              <%= r.recipe.user.username %>
+            </p>
+            <p>
+              <span class="section_title">Recipe:</span>
+              <%= r.recipe.name %>
+            </p>
+          </div>
+          <div>
+            <p>
+              <span class="section_title">Reporter:</span>
+              <%= r.user.username %>
+            </p>
+            <p>
+              <span class="section_title">Report:</span>
+              <%= r.report %>
+            </p>
+          </div>
+        </div>
         <div class="space_around">
           <%= link_to 'View this recipe', recipe_path(r.recipe) %>
-          <%= link_to 'Delete this recipe' %>
           <%= link_to 'Mark this issue as resolved', recipe_report_path(r), method: :patch %>
         </div>
       </div>

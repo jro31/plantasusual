@@ -13,7 +13,17 @@ class CommentReportPolicy < ApplicationPolicy
     return true
   end
 
-  def index?
+  # def index?
+  #   user.admin
+  # end
+
+  def update?
+    user_is_admin?
+  end
+
+  private
+
+  def user_is_admin?
     user.admin
   end
 end

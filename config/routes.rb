@@ -20,6 +20,6 @@ Rails.application.routes.draw do
     resources :recipe_reports, only: [:new, :create]
   end
 
-  resources :comment_reports, only: [:index]
+  resources :comment_reports, only: [:index, :update]
   resources :recipe_reports, only: [:index, :update]
 end
