@@ -1,6 +1,11 @@
 <div class="global_wrapper">
   <div class="foreground_element">
     <% if @user == current_user %>
+    <div class="edit_profile_button">
+      <%= link_to 'Edit your account', edit_user_registration_path %>
+    </div>
+    <% end %>
+    <% if @user == current_user %>
       <% if @user.first_name != "" %>
         <h1>Hi <%= @user.first_name %></h1>
         <h3>your recipes:</h3>
@@ -24,7 +29,7 @@
   <% if @favourites.exists? %>
     <div class="foreground_element">
       <% if @user == current_user %>
-        <h2>Your favourites</h2>
+        <h2>Your favourite recipes</h2>
       <% else %>
         <h2><%= @user.username %>'s favourites</h2>
       <% end %>
