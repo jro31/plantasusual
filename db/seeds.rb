@@ -21,7 +21,7 @@
 
 
 puts "Generating equipment..."
-equipment_array = ['Blender', 'Food processor', 'Oven', 'Stove', 'Skillet', 'Baking dish', 'Grill', 'Mixing bowl', 'Muffin tray', 'Cake tin', 'Saucepan']
+equipment_array = ['Blender', 'Food processor', 'Oven', 'Stove', 'Skillet', 'Baking dish', 'Grill', 'Mixing bowl', 'Muffin tray', 'Cake tin', 'Saucepan', 'Baking tray']
 equipment_array.each do |e|
   unless Equipment.where(name: e.capitalize).exists?
     Equipment.create!(name: e.capitalize)
