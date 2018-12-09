@@ -4,7 +4,7 @@
   <div class="logo-item">
     <div class="dropdown">
       <% if current_user[:profile_picture] %>
-        <%= cl_image_tag current_user.profile_picture, :gravity => "face", class: "avatar dropdown-toggle", "data-toggle" => "dropdown" %>
+        <%= cl_image_tag current_user.profile_picture, :width => 50, :crop => "thumb", :gravity => "face", class: "avatar dropdown-toggle", "data-toggle" => "dropdown" %>
       <% else %>
         <%= image_tag "logo.png", class: "avatar dropdown-toggle", "data-toggle" => "dropdown" %>
       <% end %>

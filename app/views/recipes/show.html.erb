@@ -61,7 +61,7 @@
   <% if @recipe[:photo] %>
     <div class="foreground_element">
       <div class="recipe_show_photo">
-        <%= cl_image_tag(@recipe.photo, transformation: { dpr: "auto", responsive: true, width: "auto", crop: "scale"}) %>
+        <%= cl_image_tag(@recipe.photo, transformation: { dpr: "auto", responsive: true, width: "auto", crop: "scale" }) %>
       </div>
     </div>
   <% end %>
