@@ -7,9 +7,9 @@
   </p>
   <div class="form_row">
   <%= f.input :size, label: false, placeholder: 'Amount', input_html: { style: 'width: 110px' } %> x
-  <%= f.association :unit, label_method: :measurement, label: false %>
+  <%= f.association :unit, collection: Unit.order('measurement ASC'), label_method: :measurement, label: false %>
   <%= f.input :ingredient, label: false, placeholder: 'Ingredient' %>
-  <%= f.association :preparation_method, label: false, prompt: 'none' %>
+  <%= f.association :preparation_method, collection: PreparationMethod.order('name ASC'), label: false, prompt: 'none' %>
 </div>
   <div class="form_row">
   <%= f.input :optional, label: 'This ingredient is optional' %>

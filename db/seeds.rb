@@ -61,7 +61,7 @@ end
 # end
 
 puts "Generating preparation methods..."
-preparation_methods_array = ['chopped', 'seeded', 'rinsed', 'quartered', 'diced', 'toasted', 'ground', 'shelled', 'soaked', 'dried', 'crushed', 'squeezed', 'drained'].sort
+preparation_methods_array = ['chopped', 'seeded', 'rinsed', 'quartered', 'diced', 'toasted', 'ground', 'shelled', 'soaked', 'dried', 'crushed', 'squeezed', 'drained', 'halved']
 preparation_methods_array.each do |pm|
   unless PreparationMethod.where(name: pm.downcase).exists?
     PreparationMethod.create!(name: pm.downcase)
@@ -69,7 +69,7 @@ preparation_methods_array.each do |pm|
 end
 
 puts "Generating units..."
-units_array = ['gram', 'millilitre', 'pinch', 'splash', 'teaspoon', 'tablespoon', 'cup', 'dash', 'litre', 'kilogram', 'piece', 'inch', 'centimetre', 'can', 'pack', 'clove', 'whole', 'large', 'medium', 'small'].sort
+units_array = ['gram', 'millilitre', 'pinch', 'splash', 'teaspoon', 'tablespoon', 'cup', 'dash', 'litre', 'kilogram', 'piece', 'inch', 'centimetre', 'can', 'pack', 'clove', 'whole', 'large', 'medium', 'small', 'leaf']
 units_array.each do |u|
   unless Unit.where(measurement: u.downcase).exists?
     Unit.create!(measurement: u.downcase)
