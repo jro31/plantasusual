@@ -47,7 +47,8 @@
   margin: 10px;
 }
 
-.fb-share-button {
-  vertical-align: top;
-  margin-top: -5px;
+// THIS ALIGNS THE FACEBOOK BUTTON WITH THE TWITTER BUTTON
+.fb-share-button span {
+  vertical-align: top !important;
+  margin-top: -1px !important;
 }
