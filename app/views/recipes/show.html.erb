@@ -126,7 +126,7 @@
           <%= link_to 'Edit this comment', edit_recipe_comment_path(@recipe, c) %>
           </div>
           <div>
-          <%= link_to 'Delete this comment', recipe_mark_comment_as_deleted_path(@recipe, c), method: :patch %>
+          <%= link_to 'Delete this comment', recipe_mark_comment_as_deleted_path(@recipe, c), data: { confirm: "Are you sure?" }, method: :patch %>
         </div>
         </div>
         <% end %>
@@ -150,7 +150,7 @@
   <% end %>
 
   <% if policy(@recipe).mark_as_deleted?  %>
-  <%= link_to mark_recipe_as_deleted_path(@recipe), method: :patch do %>
+  <%= link_to mark_recipe_as_deleted_path(@recipe), data: { confirm: "Are you sure?" }, method: :patch do %>
   <div class="foreground_element">
     Delete this recipe
   </div>

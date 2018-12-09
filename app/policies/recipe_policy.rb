@@ -24,7 +24,7 @@ class RecipePolicy < ApplicationPolicy
   end
 
   def mark_as_deleted?
-    user&.admin
+    user_is_owner_or_admin?
   end
 
   private
