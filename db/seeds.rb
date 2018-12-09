@@ -34,7 +34,7 @@ end
 # end
 
 puts "Generating categories..."
-categories_array = ['Dessert', 'Healthy', 'Breakfast', 'Gluten-free', 'Grain', 'Smoothie', 'Main', 'Side', 'Condiment', 'Salad', 'Soup', 'Sandwich', 'Fast food', 'Snack', 'Paleo', 'Stew', 'Pasta', 'Curry', 'Baked', 'High-protein', 'Dip']
+categories_array = ['Dessert', 'Healthy', 'Breakfast', 'Gluten-free', 'Grain', 'Smoothie', 'Main', 'Side', 'Condiment', 'Salad', 'Soup', 'Sandwich', 'Fast food', 'Snack', 'Paleo', 'Stew', 'Pasta', 'Curry', 'Baked', 'High-protein', 'Dip', 'Pizza']
 categories_array.each do |c|
   unless Category.where(name: c.capitalize).exists?
     Category.create!(name: c.capitalize)
@@ -61,7 +61,7 @@ end
 # end
 
 puts "Generating preparation methods..."
-preparation_methods_array = ['chopped', 'seeded', 'rinsed', 'quartered', 'diced', 'toasted', 'ground', 'shelled', 'soaked', 'dried', 'crushed', 'squeezed'].sort
+preparation_methods_array = ['chopped', 'seeded', 'rinsed', 'quartered', 'diced', 'toasted', 'ground', 'shelled', 'soaked', 'dried', 'crushed', 'squeezed', 'drained'].sort
 preparation_methods_array.each do |pm|
   unless PreparationMethod.where(name: pm.downcase).exists?
     PreparationMethod.create!(name: pm.downcase)
