@@ -16,7 +16,7 @@ class CommentReportsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     if @comment_report.valid?
       @comment_report.save
-      flash[:alert] = "Thank you for reporting this issue"
+      flash[:notice] = "Thank you for reporting this issue"
       redirect_to recipe_path(@recipe)
     else
       render :new

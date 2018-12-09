@@ -14,7 +14,7 @@ class RecipeReportsController < ApplicationController
     authorize @recipe_report
     if @recipe_report.valid?
       @recipe_report.save
-      flash[:alert] = "Thank you for reporting this issue"
+      flash[:notice] = "Thank you for reporting this issue"
       redirect_to recipe_path(@recipe)
     else
       render :new

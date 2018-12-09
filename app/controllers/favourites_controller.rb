@@ -5,6 +5,7 @@ class FavouritesController < ApplicationController
     @favourite.recipe = Recipe.find(params[:recipe_id])
     authorize @favourite
     @favourite.save
+    flash[:notice] = "Recipe favourited"
     redirect_back(fallback_location: recipes_path)
   end
 
@@ -12,6 +13,7 @@ class FavouritesController < ApplicationController
     @favourite = Favourite.find(params[:id])
     authorize @favourite
     @favourite.destroy
+    flash[:notice] = "Recipe unfavourited"
     redirect_back(fallback_location: recipes_path)
   end
 end

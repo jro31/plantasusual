@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     authorize @comment
     if @comment.valid?
       @comment.save
+      flash[:notice] = "Comment added"
     else
       flash[:alert] = "That is not a valid comment"
     end
@@ -24,11 +25,21 @@ class CommentsController < ApplicationController
     @recipe = Recipe.find(params[:recipe_id])
     authorize @comment
     if @comment.update(comment_params)
+      flash[:notice] = "Comment updated"
       redirect_to recipe_path(@recipe)
     else
       flash[:alert] = "That is not a valid comment"
       render :edit
     end
+  end
+
+  def mark_as_deleted
+    @comment = Comment.find(params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
+    authorize @comment
+    @comment.mark_as_deleted!
+    flash[:notice] = "Comment deleted"
+    redirect_to recipe_path(@recipe)
   end
 end
 

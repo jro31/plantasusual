@@ -61,7 +61,7 @@
   <% if @recipe[:photo] %>
     <div class="foreground_element">
       <div class="recipe_show_photo">
-        <%= cl_image_tag(@recipe.photo, transformation: { dpr: "auto", responsive: true, width: "auto", crop: "scale", angle: 357}) %>
+        <%= cl_image_tag(@recipe.photo, transformation: { dpr: "auto", responsive: true, width: "auto", crop: "scale"}) %>
       </div>
     </div>
   <% end %>
@@ -126,7 +126,7 @@
           <%= link_to 'Edit this comment', edit_recipe_comment_path(@recipe, c) %>
           </div>
           <div>
-          <p>Delete this comment</p>
+          <%= link_to 'Delete this comment', recipe_mark_comment_as_deleted_path(@recipe, c), method: :patch %>
         </div>
         </div>
         <% end %>
