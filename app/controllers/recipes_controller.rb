@@ -71,10 +71,17 @@ class RecipesController < ApplicationController
       redirect_to recipe_path(@recipe)
     end
   end
+
+  def mark_as_deleted
+    @recipe = Recipe.find(params[:id])
+    authorize @recipe
+    @recipe.mark_as_deleted!
+    redirect_to recipes_path
+  end
 end
 
 private
 
 def recipe_params
-  params.require(:recipe).permit(:photo, :method, :user_id, :name, :servings, :cooking_time, category_ids:[], equipment_ids:[])
+  params.require(:recipe).permit(:photo, :method, :user_id, :name, :servings, :cooking_time, :deleted, category_ids:[], equipment_ids:[])
 end

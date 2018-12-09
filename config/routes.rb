@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     end
     resources :recipe_reports, only: [:new, :create]
   end
+  patch 'recipes/:id/mark_as_deleted', to: 'recipes#mark_as_deleted', as: :mark_recipe_as_deleted
 
   resources :comment_reports, only: [:index, :update]
   resources :recipe_reports, only: [:index, :update]

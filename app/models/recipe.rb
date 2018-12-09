@@ -11,4 +11,8 @@ class Recipe < ApplicationRecord
   validates :name, presence: true, length: { minimum: 3 }
 
   mount_uploader :photo, PhotoUploader
+
+  def mark_as_deleted!
+    update_attribute :deleted, true
+  end
 end

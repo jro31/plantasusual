@@ -148,4 +148,12 @@
     Report this recipe
   </div>
   <% end %>
+
+  <% if policy(@recipe).mark_as_deleted?  %>
+  <%= link_to mark_recipe_as_deleted_path(@recipe), method: :patch do %>
+  <div class="foreground_element">
+    Delete this recipe
+  </div>
+  <% end %>
+  <% end %>
 </div>

@@ -23,6 +23,10 @@ class RecipePolicy < ApplicationPolicy
     user_is_owner_or_admin?
   end
 
+  def mark_as_deleted?
+    user&.admin
+  end
+
   private
 
   def user_is_owner_or_admin?
