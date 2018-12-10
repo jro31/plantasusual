@@ -5,6 +5,132 @@
     </div>
     <%= render 'recipe_reports/index' %>
     <%= render 'comment_reports/index' %>
+
+    <div class="foreground_element">
+    <h3>User list</h3>
+    </div>
+
+    <div class="foreground_element admin_list">
+      <table class="admin_table">
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th>Signed up</th>
+        </tr>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.username %></td>
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= user.created_at %></td>
+        </tr>
+      <% end %>
+    </table>
+    </div>
+
+    <div class="foreground_element">
+    <h3>Recipe list</h3>
+    </div>
+
+    <div class="foreground_element">
+      <table class="admin_table">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>User</th>
+          <th>Created</th>
+          <th>Deleted</th>
+        </tr>
+        <% @recipes.each do |recipe| %>
+          <tr>
+            <td><%= recipe.id %></td>
+            <td><%= recipe.name %></td>
+            <td><%= recipe.user.username %></td>
+            <td><%= recipe.created_at %></td>
+            <td><%= recipe.deleted %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <div class="foreground_element">
+      <h3>Comment list</h3>
+    </div>
+
+    <div class="foreground_element">
+      <table class="admin_table">
+        <tr>
+          <th>ID</th>
+          <th>Commenter</th>
+          <th>Recipe</th>
+          <th>Comment</th>
+          <th>Deleted</th>
+        </tr>
+        <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.id %></td>
+          <td><%= comment.user.username %></td>
+          <td><%= comment.recipe.name %></td>
+          <td><%= comment.body %></td>
+          <td><%= comment.deleted %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <div class="foreground_element">
+      <h3>Recipe report list</h3>
+    </div>
+
+    <div class="foreground_element">
+      <table class="admin_table">
+        <tr>
+          <th>ID</th>
+          <th>Recipe</th>
+          <th>Reporter</th>
+          <th>Report</th>
+          <th>Resolved</th>
+        </tr>
+        <% @recipe_reports_all.each do |recipe_report| %>
+        <tr>
+          <td><%= recipe_report.id %></td>
+          <td><%= recipe_report.recipe.name %></td>
+          <td><%= recipe_report.user.username %></td>
+          <td><%= recipe_report.report %></td>
+          <td><%= recipe_report.resolved %></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+
+    <div class="foreground_element">
+      <h3>Comment report list</h3>
+    </div>
+
+    <div class="foreground_element">
+      <table class="admin_table">
+        <tr>
+          <th>ID</th>
+          <th>Recipe</th>
+          <th>Comment</th>
+          <th>Report</th>
+          <th>Resolved</th>
+        </tr>
+        <% @comment_reports_all.each do |comment_report| %>
+          <tr>
+            <td><%= comment_report.id %></td>
+            <td><%= comment_report.comment.recipe.name %></td>
+            <td><%= comment_report.comment.body %></td>
+            <td><%= comment_report.report %></td>
+            <td><%= comment_report.resolved %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+
   <% else %>
     <div class="foreground_element">
       <h1>You are not welcome here</h1>

@@ -1,6 +1,6 @@
 <% if current_user.admin %>
   <div class="foreground_element">
-    <h2>Recipe reports</h2>
+    <h2>Unresolved recipe reports</h2>
   </div>
   <% @recipe_reports.each do |r| %>
     <% if r.resolved == false %>

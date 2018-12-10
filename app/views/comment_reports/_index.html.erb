@@ -1,6 +1,6 @@
 <% if current_user.admin %>
   <div class="foreground_element">
-    <h2>Comment reports</h2>
+    <h2>Unresolved comment reports</h2>
   </div>
   <% @comment_reports.each do |c| %>
     <% if c.resolved == false %>
