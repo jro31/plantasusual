@@ -61,7 +61,7 @@ end
 # end
 
 puts "Generating preparation methods..."
-preparation_methods_array = ['chopped', 'seeded', 'rinsed', 'quartered', 'diced', 'toasted', 'ground', 'shelled', 'soaked', 'dried', 'crushed', 'squeezed', 'drained', 'halved']
+preparation_methods_array = ['chopped', 'seeded', 'rinsed', 'quartered', 'diced', 'toasted', 'ground', 'shelled', 'soaked', 'dried', 'crushed', 'squeezed', 'drained', 'halved', 'peeled']
 preparation_methods_array.each do |pm|
   unless PreparationMethod.where(name: pm.downcase).exists?
     PreparationMethod.create!(name: pm.downcase)
