@@ -7,7 +7,7 @@
       <% if a.unit %>
       <% m = a.unit.measurement %>
       <% s = a.size %>
-      <% if m != "leaf" %><%= m %><% end %><% if s != "1" && s.downcase != "one" && s.downcase != "half" && s.downcase != "quarter" %><% if m == "gram" || m == "millilitre" || m == "teaspoon" || m == "tablespoon" || m == "cup" || m == "litre" || m == "kilogram" || m == "piece" || m == "centimetre" || m == "can" || m == "can" || m == "pack" || m == "clove" %>s<% elsif m == "pinch" || m == "splash" || m == "dash" || m == "inch" %>es<% end %><% if m == "leaf" %>leaves<% end %><% elsif m == "leaf" %>leaf<% end %>
+      <% if m != "leaf" %><%= m %><% end %><% if s != "1" && s.downcase != "one" && s.downcase != "half" && s.downcase != "quarter" && s != "" %><% if m == "gram" || m == "millilitre" || m == "teaspoon" || m == "tablespoon" || m == "cup" || m == "litre" || m == "kilogram" || m == "piece" || m == "centimetre" || m == "can" || m == "can" || m == "pack" || m == "clove" %>s<% elsif m == "pinch" || m == "splash" || m == "dash" || m == "inch" %>es<% end %><% if m == "leaf" %>leaves<% end %><% elsif m == "leaf" %>leaf<% end %>
       <% if m != "whole" && m != "large" && m != "medium" && m != "small" %>of<% end %><% end %>
       <%= a.ingredient.name.downcase %><% if a.preparation_method %>,
         <%= a.preparation_method.name %>
