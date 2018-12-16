@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_08_160845) do
+ActiveRecord::Schema.define(version: 2018_12_16_225436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,13 @@ ActiveRecord::Schema.define(version: 2018_12_08_160845) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "linked_recipes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "recipe_link_a"
+    t.integer "recipe_link_b"
+  end
+
   create_table "preparation_methods", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -100,6 +107,13 @@ ActiveRecord::Schema.define(version: 2018_12_08_160845) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "recipe_relates", force: :cascade do |t|
+    t.integer "relater_id"
+    t.integer "relatee_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "recipe_reports", force: :cascade do |t|
@@ -126,6 +140,12 @@ ActiveRecord::Schema.define(version: 2018_12_08_160845) do
     t.boolean "equipment_added", default: false
     t.boolean "deleted", default: false
     t.index ["user_id"], name: "index_recipes_on_user_id"
+  end
+
+  create_table "recipes_recipes", id: false, force: :cascade do |t|
+    t.bigint "recipe_id", null: false
+    t.integer "a_id"
+    t.integer "b_id"
   end
 
   create_table "units", force: :cascade do |t|

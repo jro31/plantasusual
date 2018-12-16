@@ -309,4 +309,20 @@
 <part>id</part>
 </key>
 </table>
+<table x="647" y="628" name="recipe_relate">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="relater_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="recipes" row="id" />
+</row>
+<row name="relatee_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="recipes" row="id" />
+</row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
 </sql>
