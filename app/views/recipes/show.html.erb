@@ -110,7 +110,7 @@
       <% end %>
     </ul>
 
-    <% if policy(RecipeRelate).create? %>
+    <% if policy(@recipe).edit? %>
     <%= render 'recipe_relates/form' %>
     <% end %>
 
