@@ -1,0 +1,5 @@
+<%= simple_form_for [@recipe, @recipe_relate] do |f| %>
+  <%= f.input :relatee_id, as: :select, collection: @other_recipes, label: false, prompt: 'Related recipes' %>
+
+  <%= f.submit 'Add', class: '' %>
+<% end %>

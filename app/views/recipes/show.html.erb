@@ -98,7 +98,22 @@
   <div class="foreground_element">
     <h3>Method</h3>
     <p><%= simple_format(@recipe.method) %></p>
-    <%= link_to 'Add related recipes', new_recipe_recipe_relate_path(@recipe) %>
+
+    <% if @recipe_relates.exists? %>
+      <p class="section_title">See also:</p>
+      <ul>
+        <% @recipe_relates.each do |rr| %>
+          <li>
+            <%= link_to rr.relatee.name, recipe_path(rr.relatee) %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+
+    <% if policy(RecipeRelate).create? %>
+    <%= render 'recipe_relates/form' %>
+    <% end %>
+
   </div>
 
   <%= link_to profile_path(@recipe.user.profile) do %>

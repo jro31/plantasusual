@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     end
     patch 'comments/:id/mark_as_deleted', to: 'comments#mark_as_deleted', as: :mark_comment_as_deleted
     resources :recipe_reports, only: [:new, :create]
-    resources :recipe_relates, only: [:new, :create, :destroy]
+    resources :recipe_relates, only: [:create, :destroy]
   end
   patch 'recipes/:id/mark_as_deleted', to: 'recipes#mark_as_deleted', as: :mark_recipe_as_deleted
 
