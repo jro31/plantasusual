@@ -98,6 +98,7 @@
   <div class="foreground_element">
     <h3>Method</h3>
     <p><%= simple_format(@recipe.method) %></p>
+    <%= link_to 'Add related recipes', new_recipe_recipe_relate_path(@recipe) %>
   </div>
 
   <%= link_to profile_path(@recipe.user.profile) do %>

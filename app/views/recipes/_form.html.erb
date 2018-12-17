@@ -59,6 +59,7 @@
         <%= f.input :photo, label: "Upload a photo" %>
         <%= f.input :photo_cache, as: :hidden %>
       </div>
+
       <% if @recipe.method == nil %>
         <div>
           <%= f.submit 'Save the method', class: 'btn btn-primary' %>
