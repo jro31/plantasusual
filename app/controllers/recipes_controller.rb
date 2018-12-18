@@ -38,6 +38,11 @@ class RecipesController < ApplicationController
     @amounts = Amount.where(recipe_id: params[:id])
     @categories = @recipe.categories
     @equipments = @recipe.equipment
+    @recipe_relates = RecipeRelate.where(relater_id: params[:id])
+
+    @other_recipes = Recipe.all.order(:name)
+    @recipe_relate = RecipeRelate.new
+
     @comment = Comment.new
   end
 
