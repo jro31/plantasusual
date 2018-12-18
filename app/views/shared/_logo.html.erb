@@ -19,6 +19,14 @@
             <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
           <% end %>
         </li>
+
+        <li>
+          <%= link_to private_messages_path do %>
+            <!-- IN THE FUTURE, ADD AN IF STATEMENT SO THAT THE ENVELOPE SYMBOL IS 'OPEN' WHEN THERE ARE NO NEW MESSAGES -->
+            <i class="fas fa-envelope"></i>  <%= t(".messages", default: "Messages") %>
+          <% end %>
+        </li>
+
         <li>
           <%= link_to new_recipe_path do %>
             <i class="fas fa-smile-wink"></i>  <%= t(".add_recipe", default: "Add a recipe") %>

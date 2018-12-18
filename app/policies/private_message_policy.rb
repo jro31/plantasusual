@@ -1,7 +1,7 @@
 class PrivateMessagePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(receiver: user).or(scope.where(sender: user))
     end
   end
 

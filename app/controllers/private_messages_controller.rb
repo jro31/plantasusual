@@ -23,6 +23,12 @@ class PrivateMessagesController < ApplicationController
       render :new
     end
   end
+
+  def index
+    @search_bar_hide = true
+    @private_messages = policy_scope(PrivateMessage).order(created_at: :desc)
+    @user = current_user
+  end
 end
 
 private

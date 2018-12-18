@@ -1,0 +1,17 @@
+<div class="global_wrapper">
+  <div class="foreground_element">
+    <h1>Private messages</h1>
+  </div>
+
+  <div class="foreground_element">
+    <ul>
+      <% @private_messages.each do |pm| %>
+        <li>
+          <% link_to private_message_path(@user) %>
+          Sender: <%= pm.sender.username %>
+          Topic: <%= pm.topic %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
