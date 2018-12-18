@@ -36,15 +36,7 @@ class PrivateMessagesController < ApplicationController
     @clicked_message = PrivateMessage.find(params[:id])
     authorize @clicked_message
     @user_messages = PrivateMessage.where(receiver: current_user).or(PrivateMessage.where(sender: current_user))
-
-    if @clicked_message.sender != current_user
-      @other_person = @clicked_message.sender
-    elsif @clicked_message.receiver != current_user
-      @other_person = @clicked_message.receiver
-    else
-      redirect_to root_path
-      flash[:alert] = "Something just went wrong"
-    end
+    get_other_person
     @message_string = @user_messages.where(receiver: @other_person).or(@user_messages.where(sender: @other_person)).order(created_at: :asc)
   end
 end
@@ -65,4 +57,15 @@ def get_other_users
     end
   end
   @other_users.uniq!
+end
+
+def get_other_person
+  if @clicked_message.sender != current_user
+    @other_person = @clicked_message.sender
+  elsif @clicked_message.receiver != current_user
+    @other_person = @clicked_message.receiver
+  else
+    redirect_to root_path
+    flash[:alert] = "Something just went wrong"
+  end
 end

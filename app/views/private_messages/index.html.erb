@@ -4,16 +4,21 @@
   </div>
 
   <div class="foreground_element">
-    <table>
+    <table class="messages">
       <tr>
-        <th>From:</th>
-        <th>Message:</th>
+        <th class="from">From:</th>
+        <th class="message">Message:</th>
       </tr>
       <% @other_users.each do |user| %>
-      <% message = @private_messages.where(receiver: user).or(@private_messages.where(sender: user)).order(created_at: :desc) %>
-          <tr>
-            <td><%= link_to message.first.sender.username, private_message_path(message.first) %></td>
-            <td><%= link_to message.first.body, private_message_path(message.first) %></td>
+      <% messages = @private_messages.where(receiver: user).or(@private_messages.where(sender: user)).order(created_at: :desc) %>
+      <% message = messages.first %>
+          <tr class="message_row">
+            <% if message.receiver != current_user %>
+              <td class="from"><%= link_to message.receiver.username, private_message_path(message) %></td>
+            <% else %>
+              <td class="from"><%= link_to message.sender.username, private_message_path(message) %></td>
+            <% end %>
+            <td class="message"><%= link_to message.body, private_message_path(message) %></td>
           </tr>
       <% end %>
     </table>
