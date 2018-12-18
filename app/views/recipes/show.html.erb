@@ -104,14 +104,24 @@
       <ul>
         <% @recipe_relates.each do |rr| %>
           <li>
-            <%= link_to rr.relatee.name, recipe_path(rr.relatee) %>
+            <%= link_to rr.relatee.name, recipe_path(rr.relatee), class: 'edit_button' %>
+            <% if rr.relatee.cooking_time %>
+            (<%= rr.relatee.cooking_time %> mins)
+            <% end %>
+            <% if policy(@recipe).edit? %>
+              <%= link_to recipe_recipe_relate_path(@recipe, rr), method: :delete, class: 'link_right' do %>
+                <i class="fas fa-times"></i>
+              <% end %>
+            <% end %>
           </li>
         <% end %>
       <% end %>
     </ul>
 
     <% if policy(@recipe).edit? %>
-    <%= render 'recipe_relates/form' %>
+      <div class="form-inline">
+        <%= render 'recipe_relates/form' %>
+      </div>
     <% end %>
 
   </div>

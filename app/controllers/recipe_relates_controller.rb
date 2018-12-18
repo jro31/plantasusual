@@ -9,6 +9,14 @@ class RecipeRelatesController < ApplicationController
     @recipe_relate.save
     redirect_to recipe_path(@relater)
   end
+
+  def destroy
+    @recipe_relate = RecipeRelate.find(params[:id])
+    @recipe = Recipe.find(params[:recipe_id])
+    authorize @recipe_relate
+    @recipe_relate.destroy
+    redirect_to recipe_path(@recipe)
+  end
 end
 
 private

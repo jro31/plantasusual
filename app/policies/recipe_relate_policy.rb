@@ -6,16 +6,16 @@ class RecipeRelatePolicy < ApplicationPolicy
   end
 
   def create?
-    can_edit?
+    user_is_owner_or_admin?
   end
 
   def destroy?
-    can_edit?
+    user_is_owner_or_admin?
   end
 
   private
 
-  def can_edit?
-    RecipePolicy.new.edit?
+  def user_is_owner_or_admin?
+    record.relater.user == user || user.admin
   end
 end
