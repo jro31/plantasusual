@@ -1,9 +1,13 @@
 <div class="global_wrapper">
   <div class="foreground_element">
     <% if @user == current_user %>
-    <div class="edit_profile_button">
-      <%= link_to 'Edit your account', edit_user_registration_path %>
-    </div>
+      <div class="edit_profile_button">
+        <%= link_to 'Edit your account', edit_user_registration_path %>
+      </div>
+    <% else %>
+      <div class="edit_profile_button">
+        <%= link_to "Send private message to #{@user.username}", root_path %>
+      </div>
     <% end %>
     <% if @user == current_user %>
       <% if @user.first_name != "" %>
