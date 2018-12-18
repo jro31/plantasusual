@@ -10,7 +10,9 @@ Rails.application.routes.draw do
 
   get 'pages/admin_panel', to: 'pages#admin_panel'
 
-  resources :profiles, only: [:show]
+  resources :profiles, only: [:show] do
+    resources :private_messages, only: [:new, :create, :index, :show]
+  end
   resources :recipes do
     resources :amounts, only: [:new, :create, :destroy]
     resources :favourites, only: [:create, :destroy]

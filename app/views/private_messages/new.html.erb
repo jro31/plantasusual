@@ -1,0 +1,16 @@
+<div class="global_wrapper">
+  <div class="foreground_element">
+    <h1>New message</h1>
+  </div>
+
+  <div class="foreground_element">
+    <p>To: <%= @receiver.username %></p>
+
+    <%= simple_form_for [@profile, @private_message] do |f| %>
+      <%= f.input :topic %>
+      <%= f.input :body %>
+      <%= f.submit 'Send', class: 'btn btn-primary' %>
+    <% end %>
+
+  </div>
+</div>

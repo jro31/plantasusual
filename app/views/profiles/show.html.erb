@@ -6,7 +6,7 @@
       </div>
     <% else %>
       <div class="edit_profile_button">
-        <%= link_to "Send private message to #{@user.username}", root_path %>
+        <%= link_to "Send private message to #{@user.username}", new_profile_private_message_path(@profile) %>
       </div>
     <% end %>
     <% if @user == current_user %>
