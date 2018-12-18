@@ -21,9 +21,24 @@
         </li>
 
         <li>
+
+          <% received_messages = PrivateMessage.where(receiver: current_user).order(created_at: :desc) %>
+          <% unread_message = false %>
+          <% received_messages.each do |rm| %>
+            <% if rm.read == false %>
+              <% unread_message = true %>
+            <% end %>
+          <% end %>
+
           <%= link_to private_messages_path do %>
             <!-- IN THE FUTURE, ADD AN IF STATEMENT SO THAT THE ENVELOPE SYMBOL IS 'OPEN' WHEN THERE ARE NO NEW MESSAGES -->
-            <i class="fas fa-envelope"></i>  <%= t(".messages", default: "Messages") %>
+            <% if unread_message == false %>
+              <i class="fas fa-envelope"></i>  <%= t(".messages", default: "Messages") %>
+            <% else %>
+              <div class="unread_messages">
+              <i class="fas fa-envelope-open"></i>  <%= t(".new_messages", default: "New Messages") %>
+              </div>
+            <% end %>
           <% end %>
         </li>
 
