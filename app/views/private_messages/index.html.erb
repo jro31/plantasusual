@@ -9,10 +9,11 @@
         <th>From:</th>
         <th>Message:</th>
       </tr>
-      <% @private_messages.each do |pm| %>
+      <% @other_users.each do |user| %>
+      <% message = @private_messages.where(receiver: user).or(@private_messages.where(sender: user)).order(created_at: :desc) %>
           <tr>
-            <td><%= link_to pm.sender.username, private_message_path(pm) %></td>
-            <td><%= link_to pm.body, private_message_path(pm) %></td>
+            <td><%= link_to message.first.sender.username, private_message_path(message.first) %></td>
+            <td><%= link_to message.first.body, private_message_path(message.first) %></td>
           </tr>
       <% end %>
     </table>

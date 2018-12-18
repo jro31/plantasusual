@@ -27,6 +27,7 @@ class PrivateMessagesController < ApplicationController
   def index
     @search_bar_hide = true
     @private_messages = policy_scope(PrivateMessage).order(created_at: :desc)
+    get_other_users
     @user = current_user
   end
 
@@ -44,7 +45,7 @@ class PrivateMessagesController < ApplicationController
       redirect_to root_path
       flash[:alert] = "Something just went wrong"
     end
-    @message_string = @user_messages.where(receiver: @other_person).or(@user_messages.where(sender: @other_person)).order(created_at: :desc)
+    @message_string = @user_messages.where(receiver: @other_person).or(@user_messages.where(sender: @other_person)).order(created_at: :asc)
   end
 end
 
@@ -52,4 +53,16 @@ private
 
 def private_message_params
   params.require(:private_message).permit(:body)
+end
+
+def get_other_users
+  @other_users = []
+  @private_messages.each do |pm|
+    if pm.sender != current_user
+      @other_users << pm.sender
+    elsif pm.receiver != current_user
+      @other_users << pm.receiver
+    end
+  end
+  @other_users.uniq!
 end
