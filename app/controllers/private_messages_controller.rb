@@ -35,9 +35,17 @@ class PrivateMessagesController < ApplicationController
     @search_bar_hide = true
     @clicked_message = PrivateMessage.find(params[:id])
     authorize @clicked_message
+    if @clicked_message.read == false
+      update
+    end
     @user_messages = PrivateMessage.where(receiver: current_user).or(PrivateMessage.where(sender: current_user))
     get_other_person
     @message_string = @user_messages.where(receiver: @other_person).or(@user_messages.where(sender: @other_person)).order(created_at: :asc)
+  end
+
+  def update
+    @clicked_message.read = true
+    @clicked_message.update(update_params)
   end
 end
 
@@ -45,6 +53,10 @@ private
 
 def private_message_params
   params.require(:private_message).permit(:body)
+end
+
+def update_params
+  params.permit(:id)
 end
 
 def get_other_users
