@@ -4,14 +4,17 @@
   </div>
 
   <div class="foreground_element">
-    <ul>
+    <table>
+      <tr>
+        <th>From:</th>
+        <th>Message:</th>
+      </tr>
       <% @private_messages.each do |pm| %>
-        <li>
-          <% link_to private_message_path(@user) %>
-          Sender: <%= pm.sender.username %>
-          Topic: <%= pm.topic %>
-        </li>
+          <tr>
+            <td><%= link_to pm.sender.username, private_message_path(pm) %></td>
+            <td><%= link_to pm.body, private_message_path(pm) %></td>
+          </tr>
       <% end %>
-    </ul>
+    </table>
   </div>
 </div>

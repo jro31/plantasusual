@@ -8,4 +8,8 @@ class PrivateMessagePolicy < ApplicationPolicy
   def create?
     return true
   end
+
+  def show?
+    record.sender == user || record.receiver == user || user.admin
+  end
 end

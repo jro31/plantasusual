@@ -7,8 +7,7 @@
     <p>To: <%= @receiver.username %></p>
 
     <%= simple_form_for [@profile, @private_message] do |f| %>
-      <%= f.input :topic %>
-      <%= f.input :body %>
+      <%= f.input :body, label: false, placeholder: "Your message" %>
       <%= f.submit 'Send', class: 'btn btn-primary' %>
     <% end %>
 
