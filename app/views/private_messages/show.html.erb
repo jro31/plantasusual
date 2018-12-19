@@ -1,1 +1,22 @@
-<h1>I'm the pm#show page</h1>
+<div class="global_wrapper">
+  <div class="foreground_element">
+    <h1><%= @other_person.username %></h1>
+  </div>
+
+  <div class="foreground_element">
+    <ul>
+      <% @message_string.each do |message| %>
+        <% if message.sender == current_user %>
+          <div class="sent_message">
+            <li><%= message.body %></li>
+          </div>
+        <% else %>
+          <div class="received_message">
+            <li><%= message.body %></li>
+          </div>
+        <% end %>
+        <br />
+      <% end %>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.sent_message, .received_message {
+  width: 100%;
+}
+
+.sent_message {
+  text-align: right;
+}
+
+.received_message {
+  text-align: left;
+}
+
+.sent_message li, .received_message li {
+  display: inline-block;
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(50, 50, 50, 0.5);
+  max-width: 75%;
+}
+
+.sent_message li {
+  background-color: rgba(37,211,102, 1.0);
+
+}
+
+.received_message li {
+  background-color: white;
+
+}
