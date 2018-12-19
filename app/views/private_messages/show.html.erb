@@ -16,10 +16,17 @@
         <% if message.sender == current_user %>
           <div class="sent_message bold">
             <li><%= message.body %></li>
+            <br />
+              <div class="message_time">
+              <%= message.created_at.strftime("%H:%M %d-%-m-%y") %>
+              </div>
           </div>
         <% else %>
           <div class="received_message bold">
             <li><%= message.body %></li>
+            <div class="message_time">
+              <%= message.created_at.strftime("%H:%M %d-%-m-%y") %>
+            </div>
           </div>
         <% end %>
         <br />

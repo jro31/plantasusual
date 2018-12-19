@@ -26,5 +26,17 @@
 
 .received_message li {
   background-color: white;
+}
 
+.message_time {
+  font-weight: 400;
+  font-size: smaller;
+}
+
+.sent_message .message_time {
+  margin-right: 10px;
+}
+
+.received_message .message_time {
+  margin-left: 10px;
 }
