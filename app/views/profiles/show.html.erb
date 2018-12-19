@@ -1,9 +1,28 @@
 <div class="global_wrapper">
   <div class="foreground_element">
     <% if @user == current_user %>
-    <div class="edit_profile_button">
-      <%= link_to 'Edit your account', edit_user_registration_path %>
-    </div>
+      <div class="edit_profile_button">
+        <%= link_to 'Edit your account', edit_user_registration_path %>
+      </div>
+    <% else %>
+      <div class="edit_profile_button">
+
+        <% user_messages = PrivateMessage.where(receiver: current_user).or(PrivateMessage.where(sender: current_user)) %>
+        <% message_history = false %>
+        <% user_messages.each do |message| %>
+          <% if message.sender == @profile.user || message.receiver == @profile.user %>
+            <% message_history = true %>
+            <%= link_to "Send private message to #{@user.username}", private_message_path(message) %>
+            <% break %>
+          <% end %>
+        <% end %>
+
+        <% if message_history == false %>
+          <%= link_to "Send private message to #{@user.username}", new_profile_private_message_path(@profile) %>
+        <% end %>
+
+
+      </div>
     <% end %>
     <% if @user == current_user %>
       <% if @user.first_name != "" %>

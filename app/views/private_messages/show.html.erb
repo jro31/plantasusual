@@ -1,0 +1,36 @@
+<div class="global_wrapper">
+  <div class="foreground_element">
+    <h1><%= @other_person.username %></h1>
+  </div>
+
+  <div class="foreground_element">
+    <%= simple_form_for [@profile, @private_message] do |f| %>
+      <%= f.input :body, label: false, placeholder: "Send a message to #{@other_person.username}" %>
+      <%= f.submit 'Send', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+
+  <div class="foreground_element">
+    <ul>
+      <% @message_string.each do |message| %>
+        <% if message.sender == current_user %>
+          <div class="sent_message bold">
+            <li><%= message.body %></li>
+            <br />
+              <div class="message_time">
+              <%= message.created_at.strftime("%H:%M %d-%-m-%y") %>
+              </div>
+          </div>
+        <% else %>
+          <div class="received_message bold">
+            <li><%= message.body %></li>
+            <div class="message_time">
+              <%= message.created_at.strftime("%H:%M %d-%-m-%y") %>
+            </div>
+          </div>
+        <% end %>
+        <br />
+      <% end %>
+    </ul>
+  </div>
+</div>

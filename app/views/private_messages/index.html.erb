@@ -1,0 +1,30 @@
+<div class="global_wrapper">
+  <div class="foreground_element">
+    <h1>Private messages</h1>
+  </div>
+
+  <div class="foreground_element">
+    <table class="messages">
+      <tr>
+        <th class="from">From:</th>
+        <th class="message">Message:</th>
+      </tr>
+      <% @other_users.each do |user| %>
+        <% messages = @private_messages.where(receiver: user).or(@private_messages.where(sender: user)).order(created_at: :desc) %>
+        <% message = messages.first %>
+      <% if message.read == false && message.receiver == current_user %>
+          <tr class="message_row bold">
+      <% else %>
+          <tr class="message_row">
+      <% end %>
+            <% if message.receiver != current_user %>
+              <td class="from"><%= link_to message.receiver.username, private_message_path(message) %></td>
+            <% else %>
+              <td class="from"><%= link_to message.sender.username, private_message_path(message) %></td>
+            <% end %>
+            <td class="message"><%= link_to message.body, private_message_path(message) %></td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

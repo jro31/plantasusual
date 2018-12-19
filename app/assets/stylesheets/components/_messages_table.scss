@@ -1,0 +1,24 @@
+.messages {
+  width: 100%;
+  border: 1px solid rgba(50, 50, 50, 1.0);
+}
+
+.messages .message_row {
+  border-top: 1px solid rgba(211, 211, 211, 1.0);
+}
+
+.messages .from, .messages .message {
+  padding: 20px 5px;
+}
+
+.messages .from {
+  width: 25%;
+  background-color: rgba(211, 211, 211, 0.5);
+}
+
+.messages .message {
+  width: 75%;
+  background-color: white;
+  border-left: 1px solid rgba(50, 50, 50, 1.0);
+  overflow: hidden;
+}

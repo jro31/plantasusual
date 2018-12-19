@@ -77,7 +77,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="337" y="317" name="users">
+<table x="344" y="296" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -106,7 +106,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1223" y="338" name="equipment">
+<table x="1159" y="296" name="equipment">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -117,7 +117,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1041" y="412" name="ingredients">
+<table x="1066" y="418" name="ingredients">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -128,7 +128,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="825" y="468" name="amounts">
+<table x="830" y="549" name="amounts">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -309,7 +309,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="647" y="628" name="recipe_relate">
+<table x="860" y="379" name="recipe_relate">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -321,6 +321,28 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="recipes" row="id" />
 </row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="93" y="273" name="private_messages">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="body" null="1" autoincrement="0">
+<datatype>TEXT</datatype>
+<default>NULL</default></row>
+<row name="sender_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="receiver_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="read" null="1" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'false'</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
