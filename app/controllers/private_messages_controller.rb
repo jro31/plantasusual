@@ -17,7 +17,6 @@ class PrivateMessagesController < ApplicationController
     authorize @private_message
     if @private_message.valid?
       @private_message.save
-      # flash[:notice] = "Message sent"
       redirect_to private_message_path(@private_message)
     else
       render :new
