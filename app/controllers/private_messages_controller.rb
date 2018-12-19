@@ -17,8 +17,8 @@ class PrivateMessagesController < ApplicationController
     authorize @private_message
     if @private_message.valid?
       @private_message.save
-      flash[:notice] = "Message sent"
-      redirect_to profile_path(@profile)
+      # flash[:notice] = "Message sent"
+      redirect_to private_message_path(@private_message)
     else
       render :new
     end
@@ -37,10 +37,12 @@ class PrivateMessagesController < ApplicationController
     authorize @clicked_message
     @user_messages = PrivateMessage.where(receiver: current_user).or(PrivateMessage.where(sender: current_user))
     get_other_person
+    @profile = @other_person.profile
+    @private_message = PrivateMessage.new
     if @clicked_message.read == false && @clicked_message.receiver == current_user
       update
     end
-    @message_string = @user_messages.where(receiver: @other_person).or(@user_messages.where(sender: @other_person)).order(created_at: :asc)
+    @message_string = @user_messages.where(receiver: @other_person).or(@user_messages.where(sender: @other_person)).order(created_at: :desc)
   end
 
   def update

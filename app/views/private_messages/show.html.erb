@@ -4,14 +4,21 @@
   </div>
 
   <div class="foreground_element">
+    <%= simple_form_for [@profile, @private_message] do |f| %>
+      <%= f.input :body, label: false, placeholder: "Send a message to #{@other_person.username}" %>
+      <%= f.submit 'Send', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+
+  <div class="foreground_element">
     <ul>
       <% @message_string.each do |message| %>
         <% if message.sender == current_user %>
-          <div class="sent_message">
+          <div class="sent_message bold">
             <li><%= message.body %></li>
           </div>
         <% else %>
-          <div class="received_message">
+          <div class="received_message bold">
             <li><%= message.body %></li>
           </div>
         <% end %>
