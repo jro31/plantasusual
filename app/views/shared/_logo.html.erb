@@ -27,11 +27,11 @@
           <% received_messages.each do |rm| %>
             <% if rm.read == false %>
               <% unread_message = true %>
+              <% break %>
             <% end %>
           <% end %>
 
           <%= link_to private_messages_path do %>
-            <!-- IN THE FUTURE, ADD AN IF STATEMENT SO THAT THE ENVELOPE SYMBOL IS 'OPEN' WHEN THERE ARE NO NEW MESSAGES -->
             <% if unread_message == false %>
               <i class="fas fa-envelope"></i>  <%= t(".messages", default: "Messages") %>
             <% else %>

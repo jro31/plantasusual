@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
     if @comment.valid?
       @comment.save
       flash[:notice] = "Comment added"
+      send_comment_notification
     else
       flash[:alert] = "That is not a valid comment"
     end
@@ -47,4 +48,16 @@ private
 
 def comment_params
   params.require(:comment).permit(:body, :user_id, :recipe_id, :deleted)
+end
+
+def send_comment_notification
+  comment_notification = PrivateMessage.new
+  recipe = @comment.recipe
+  recipe_owner = @comment.recipe.user
+  comment_notification.body = "Someone just commented on your recipe '#{view_context.link_to recipe.name, recipe_path(recipe)}.'"
+  comment_notification.receiver = recipe_owner
+  comment_notification.sender = User.find(1)
+  if comment_notification.receiver != current_user
+    comment_notification.save
+  end
 end
