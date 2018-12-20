@@ -15,7 +15,7 @@
       <% @message_string.each do |message| %>
         <% if message.sender == current_user %>
           <div class="sent_message bold">
-            <li><%= message.body %></li>
+            <li><%= simple_format(message.body) %></li>
             <br />
               <div class="message_time">
               <%= message.created_at.strftime("%H:%M %d-%-m-%y") %>
@@ -23,7 +23,7 @@
           </div>
         <% else %>
           <div class="received_message bold">
-            <li><%= message.body %></li>
+            <li><%= simple_format(message.body) %></li>
             <div class="message_time">
               <%= message.created_at.strftime("%H:%M %d-%-m-%y") %>
             </div>
