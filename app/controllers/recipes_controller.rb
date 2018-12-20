@@ -39,10 +39,8 @@ class RecipesController < ApplicationController
     @categories = @recipe.categories
     @equipments = @recipe.equipment
     @recipe_relates = RecipeRelate.where(relater_id: params[:id])
-
-    @other_recipes = Recipe.all.order(:name)
+    @other_recipes = Recipe.where.not(id: @recipe).order(:name)
     @recipe_relate = RecipeRelate.new
-
     @comment = Comment.new
   end
 
