@@ -28,3 +28,18 @@ h3 {
 .section_title {
   font-weight: bold;
 }
+
+.main_heading {
+  height: 280px;
+  background-image: url("transparent_heading.png");
+  background-color: transparent;
+  background-position: center center;
+  opacity: 0.9;
+}
+
+@media (max-width: 560px) {
+  .main_heading {
+    height: 200px;
+    background-size: cover;
+  }
+}

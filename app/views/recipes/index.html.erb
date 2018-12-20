@@ -1,14 +1,14 @@
 <div class="global_wrapper">
-  <div class="foreground_element">
+  <div class="main_heading foreground_element">
 
-    <!-- Twitter follow button start -->
-    <a href="https://twitter.com/plantasusual?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false"></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <!-- Twitter follow button end -->
+    <div class="twitter_follow_button">
+      <!-- Twitter follow button start -->
+      <a href="https://twitter.com/plantasusual?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false"></a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <!-- Twitter follow button end -->
+    </div>
 
-    <h1>Plant as Usual</h1>
-
-    <% if policy(Recipe).new? %>  <!-- THIS IF STATEMENT SIMPLY CHECKS THE STATUS OF THE new? METHOD IN THE RECIPE POLICY ('(Recipe) REFERS TO THE CLASS HERE, AS THERE IS NO INSTACE TO CALL IT ON). AS THE METHOD IS AUTHORIZED (VIA THE APPLICATION POLICY) THE BUTTON IS DISPLAYED. HOWEVER IF YOU WANTED TO DISABLE THE CREATION OF NEW RECIPES, CHANGING THIS METHOD TO RETURN FALSE WOULD HIDE ALL BUTTONS HELD WITHIN THESE AND IDENTICAL IF STATEMENTS, WHICH SHOULD BE AROUND ALL 'ADD A RECIPE' LINKS -->
-      <div class="btn btn-warning">
+    <% if policy(Recipe).new? %>
+      <div class="add_a_recipe_button btn btn-warning">
         <% if current_user %>
           <%= link_to 'Add a recipe', new_recipe_path %>
         <% else %>

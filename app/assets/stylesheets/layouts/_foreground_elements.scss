@@ -52,3 +52,19 @@
   vertical-align: top !important;
   margin-top: -1px !important;
 }
+
+// THE ONE ON THE RECIPE/INDEX PAGE
+.twitter_follow_button {
+  // opacity: 1;
+}
+
+.add_a_recipe_button {
+  // opacity: 1;
+  margin-top: 180px;
+}
+
+@media (max-width: 560px) {
+  .add_a_recipe_button {
+    margin-top: 100px;
+  }
+}
